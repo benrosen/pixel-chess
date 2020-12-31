@@ -1,15 +1,15 @@
 {
   "dev": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-pixelchess-dev-220902-authRole",
-      "UnauthRoleArn": "arn:aws:iam::748706229283:role/amplify-pixelchess-dev-220902-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::748706229283:role/amplify-pixelchess-dev-220902-authRole",
+      "AuthRoleName": "amplify-pixelchess-dev-225302-authRole",
+      "UnauthRoleArn": "arn:aws:iam::326238338403:role/amplify-pixelchess-dev-225302-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::326238338403:role/amplify-pixelchess-dev-225302-authRole",
       "Region": "us-east-1",
-      "DeploymentBucketName": "amplify-pixelchess-dev-220902-deployment",
-      "UnauthRoleName": "amplify-pixelchess-dev-220902-unauthRole",
-      "StackName": "amplify-pixelchess-dev-220902",
-      "StackId": "arn:aws:cloudformation:us-east-1:748706229283:stack/amplify-pixelchess-dev-220902/8b244ae0-4b15-11eb-a741-0a818cac4dad",
-      "AmplifyAppId": "d2znenz5izs5pn"
+      "DeploymentBucketName": "amplify-pixelchess-dev-225302-deployment",
+      "UnauthRoleName": "amplify-pixelchess-dev-225302-unauthRole",
+      "StackName": "amplify-pixelchess-dev-225302",
+      "StackId": "arn:aws:cloudformation:us-east-1:326238338403:stack/amplify-pixelchess-dev-225302/b0645e20-4b1b-11eb-aadf-126b6ef530bb",
+      "AmplifyAppId": "d1gzibzsagll3j"
     }
   }
 }
