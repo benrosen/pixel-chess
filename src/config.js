@@ -6,8 +6,8 @@ import preload from "./scenes/preload";
  */
 const config = {
   backgroundColor: "000000",
-  height: 300,
-  width: 400,
+  height: 224,
+  width: 128,
   scene: {
     preload: preload,
     create: create,
