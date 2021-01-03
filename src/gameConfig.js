@@ -9,7 +9,7 @@ import preload from "./scenes/preload/preload";
  * @module config
  * @type {Phaser.Types.Core.GameConfig}
  */
-const config = {
+const gameConfig = {
   backgroundColor: "000000",
   height: 224,
   width: 128,
@@ -20,4 +20,4 @@ const config = {
   zoom: 2,
 };
 
-export default config;
+export default gameConfig;
