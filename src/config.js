@@ -1,6 +1,8 @@
 import create from "./scenes/create";
 import preload from "./scenes/preload";
 
+// TODO configure game for pixel art
+
 /**
  * The Phaser game config.
  */
@@ -12,6 +14,7 @@ const config = {
     preload: preload,
     create: create,
   },
+  zoom: 2,
 };
 
 export default config;
