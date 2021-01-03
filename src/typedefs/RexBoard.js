@@ -1,5 +1,3 @@
-// TODO add methods to documentation
-
 /**
  * Core object of Board system.
  *

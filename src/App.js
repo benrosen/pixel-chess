@@ -4,9 +4,12 @@ import React from "react";
 import colors from "./colors";
 import gameConfig from "./gameConfig";
 
-// TODO add PropTypes to App.jsx
-// TODO document App.jsx
-
+/**
+ * The container component for the app.
+ *
+ * @function
+ * @param {Object} [props] The component props.
+ */
 export default function App() {
   return (
     <Grid
