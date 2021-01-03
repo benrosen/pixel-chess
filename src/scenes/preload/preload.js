@@ -1,5 +1,3 @@
-import loadScenePlugins from "./loadScenePlugins";
-
 /**
  * The preload callback for the game scene.
  *
@@ -7,6 +5,4 @@ import loadScenePlugins from "./loadScenePlugins";
  * @module create
  * @see {Phaser.Types.Scenes.ScenePreloadCallback}
  */
-export default function preload() {
-  loadScenePlugins(this);
-}
+export default function preload() {}
