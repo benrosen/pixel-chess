@@ -1,6 +1,7 @@
 import { GameComponent } from "phaser-react-tools";
 import { Grid } from "semantic-ui-react";
 import React from "react";
+import colors from "./colors";
 import gameConfig from "./gameConfig";
 
 // TODO add PropTypes to App.jsx
@@ -8,7 +9,14 @@ import gameConfig from "./gameConfig";
 
 export default function App() {
   return (
-    <Grid style={{ height: "100vh", margin: 0 }} verticalAlign="middle">
+    <Grid
+      style={{
+        backgroundColor: colors.board.light,
+        height: "100vh",
+        margin: 0,
+      }}
+      verticalAlign="middle"
+    >
       <Grid.Row textAlign="center">
         <Grid.Column>
           <GameComponent config={gameConfig}></GameComponent>

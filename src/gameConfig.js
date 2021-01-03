@@ -10,9 +10,11 @@ import preload from "./scenes/preload/preload";
  * @type {Phaser.Types.Core.GameConfig}
  */
 const gameConfig = {
-  backgroundColor: "000000",
   height: 224,
   width: 128,
+  render: {
+    transparent: true,
+  },
   scene: {
     preload: preload,
     create: create,
