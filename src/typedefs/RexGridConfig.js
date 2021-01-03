@@ -1,3 +1,4 @@
+import RexGridPerspective from "./RexGridPerspective";
 import RexGridType from "./RexGridType";
 
 /**
