@@ -3,6 +3,7 @@ import "./index.css";
 
 import Amplify from "aws-amplify";
 import App from "./App";
+import { BrowserRouter } from "react-router-dom";
 import React from "react";
 import ReactDOM from "react-dom";
 import awsExports from "./aws-exports";
@@ -11,9 +12,11 @@ import reportWebVitals from "./reportWebVitals";
 Amplify.configure(awsExports);
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <BrowserRouter>
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  </BrowserRouter>,
   document.getElementById("root")
 );
 
