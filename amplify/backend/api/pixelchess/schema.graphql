@@ -1,0 +1,15 @@
+# TODO model Players and their relationships to Matches and Moves
+
+type Match @model {
+  id: ID!
+  moves: [Move!]! @connection(keyName: "ByMatchId", fields: ["id"])
+}
+
+type Move
+  @key(name: "ByMatchId", fields: ["matchId"], queryField: "movesByMatch")
+  @model {
+  id: ID!
+  matchId: ID!
+  match: Match @connection(fields: ["matchId"])
+  notation: String!
+}
