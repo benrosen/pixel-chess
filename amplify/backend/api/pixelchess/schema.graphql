@@ -1,12 +1,35 @@
-# TODO model Players and their relationships to Matches and Moves
-
-type Match @model {
+type Match
+  @auth(
+    rules: [
+      { allow: public, provider: iam, operations: [create] }
+      { allow: owner, ownerField: "playerIds", operations: [read] }
+    ]
+  )
+  @model {
   id: ID!
+  connections: [Connection!]! @connection(keyName: "ByMatchId", fields: ["id"])
   moves: [Move!]! @connection(keyName: "ByMatchId", fields: ["id"])
+  playerIds: [String!]! @function(name: "pixelchessResolveGraphQLField")
 }
 
+# TODO validate connection with lambda resolver before creating it
+type Connection
+  @auth(rules: [{ allow: public, provider: iam, operations: [create] }])
+  @key(
+    name: "ByMatchId"
+    fields: ["matchId"]
+    queryField: "connectionsByMatchId"
+  )
+  @model {
+  id: ID!
+  matchId: ID!
+  match: Match @connection(fields: ["matchId"])
+}
+
+# TODO validate move with lambda resolver before creating it
 type Move
-  @key(name: "ByMatchId", fields: ["matchId"], queryField: "movesByMatch")
+  @auth(rules: [{ allow: public, provider: iam, operations: [create] }])
+  @key(name: "ByMatchId", fields: ["matchId"], queryField: "movesByMatchId")
   @model {
   id: ID!
   matchId: ID!
