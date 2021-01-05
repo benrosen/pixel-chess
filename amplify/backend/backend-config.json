@@ -19,5 +19,22 @@
         }
       }
     }
+  },
+  "function": {
+    "pixelchessResolveGraphQLField": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "pixelchessResolveMatchPlayerIds": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "pixelchessUtilityLayer": {
+      "providerPlugin": "awscloudformation",
+      "service": "LambdaLayer",
+      "build": true
+    }
   }
 }

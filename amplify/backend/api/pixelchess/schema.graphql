@@ -1,17 +1,3 @@
-type Match
-  @auth(
-    rules: [
-      { allow: public, provider: iam, operations: [create] }
-      { allow: owner, ownerField: "playerIds", operations: [read] }
-    ]
-  )
-  @model {
-  id: ID!
-  connections: [Connection!]! @connection(keyName: "ByMatchId", fields: ["id"])
-  moves: [Move!]! @connection(keyName: "ByMatchId", fields: ["id"])
-  playerIds: [String!]! @function(name: "pixelchessResolveGraphQLField")
-}
-
 # TODO validate connection with lambda resolver before creating it
 type Connection
   @auth(rules: [{ allow: public, provider: iam, operations: [create] }])
@@ -24,6 +10,20 @@ type Connection
   id: ID!
   matchId: ID!
   match: Match @connection(fields: ["matchId"])
+}
+
+type Match
+  @auth(
+    rules: [
+      { allow: public, provider: iam, operations: [create] }
+      { allow: owner, ownerField: "playerIds", operations: [read] }
+    ]
+  )
+  @model {
+  id: ID!
+  connections: [Connection!]! @connection(keyName: "ByMatchId", fields: ["id"])
+  moves: [Move!]! @connection(keyName: "ByMatchId", fields: ["id"])
+  playerIds: [String!]! @function(name: "pixelchessResolveGraphQLField")
 }
 
 # TODO validate move with lambda resolver before creating it
