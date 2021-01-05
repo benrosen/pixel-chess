@@ -1,23 +1,54 @@
 {
-    "dev": {
-        "awscloudformation": {
-            "AuthRoleName": "amplify-pixelchess-dev-225302-authRole",
-            "UnauthRoleArn": "arn:aws:iam::326238338403:role/amplify-pixelchess-dev-225302-unauthRole",
-            "AuthRoleArn": "arn:aws:iam::326238338403:role/amplify-pixelchess-dev-225302-authRole",
-            "Region": "us-east-1",
-            "DeploymentBucketName": "amplify-pixelchess-dev-225302-deployment",
-            "UnauthRoleName": "amplify-pixelchess-dev-225302-unauthRole",
-            "StackName": "amplify-pixelchess-dev-225302",
-            "StackId": "arn:aws:cloudformation:us-east-1:326238338403:stack/amplify-pixelchess-dev-225302/b0645e20-4b1b-11eb-aadf-126b6ef530bb",
-            "AmplifyAppId": "d1gzibzsagll3j"
-        },
-        "categories": {
-            "hosting": {
-                "amplifyhosting": {
-                    "appId": "d1gzibzsagll3j",
-                    "type": "cicd"
-                }
-            }
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-pixelchess-dev-225302-authRole",
+      "UnauthRoleArn": "arn:aws:iam::326238338403:role/amplify-pixelchess-dev-225302-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::326238338403:role/amplify-pixelchess-dev-225302-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-pixelchess-dev-225302-deployment",
+      "UnauthRoleName": "amplify-pixelchess-dev-225302-unauthRole",
+      "StackName": "amplify-pixelchess-dev-225302",
+      "StackId": "arn:aws:cloudformation:us-east-1:326238338403:stack/amplify-pixelchess-dev-225302/b0645e20-4b1b-11eb-aadf-126b6ef530bb",
+      "AmplifyAppId": "d1gzibzsagll3j"
+    },
+    "categories": {
+      "hosting": {
+        "amplifyhosting": {
+          "appId": "d1gzibzsagll3j",
+          "type": "cicd"
         }
+      },
+      "function": {
+        "pixelchessUtilityLayer": {
+          "deploymentBucketName": "amplify-pixelchess-dev-225302-deployment",
+          "s3Key": "amplify-builds/pixelchessUtilityLayer-build.zip"
+        }
+      },
+      "auth": {
+        "pixelchessff1759b5ff1759b5": {}
+      }
+    },
+    "nonCFNdata": {
+      "function": {
+        "pixelchessUtilityLayer": {
+          "layerVersionMap": {
+            "1": {
+              "permissions": [
+                {
+                  "type": "awsAccounts",
+                  "accounts": [
+                    "326238338403"
+                  ]
+                },
+                {
+                  "type": "private"
+                }
+              ],
+              "hash": "If01rvxp6rWZYZjYegrw0JJ70nk7VQ5TEF2QircQCXQ="
+            }
+          }
+        }
+      }
     }
+  }
 }

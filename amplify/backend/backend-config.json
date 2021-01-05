@@ -6,7 +6,27 @@
       "lastPushTimeStamp": "2020-12-31T05:13:05.308Z"
     }
   },
-  "api": {},
+  "api": {
+    "pixelchess": {
+      "service": "AppSync",
+      "providerPlugin": "awscloudformation",
+      "output": {
+        "authConfig": {
+          "defaultAuthentication": {
+            "authenticationType": "AMAZON_COGNITO_USER_POOLS",
+            "userPoolConfig": {
+              "userPoolId": "authpixelchessff1759b5ff1759b5"
+            }
+          },
+          "additionalAuthenticationProviders": [
+            {
+              "authenticationType": "AWS_IAM"
+            }
+          ]
+        }
+      }
+    }
+  },
   "function": {
     "pixelchessResolveGraphQLField": {
       "build": true,
@@ -22,6 +42,14 @@
       "providerPlugin": "awscloudformation",
       "service": "LambdaLayer",
       "build": true
+    }
+  },
+  "auth": {
+    "pixelchessff1759b5ff1759b5": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false
     }
   }
 }
