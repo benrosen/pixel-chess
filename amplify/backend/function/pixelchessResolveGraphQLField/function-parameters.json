@@ -1,3 +1,16 @@
 {
-  "lambdaLayers": []
+  "lambdaLayers": [
+    {
+      "type": "ProjectLayer",
+      "resourceName": "pixelchessUtilityLayer",
+      "version": 1
+    }
+  ],
+  "permissions": {
+    "function": {
+      "pixelchessResolveMatchPlayerIds": [
+        "read"
+      ]
+    }
+  }
 }
