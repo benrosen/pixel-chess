@@ -45,6 +45,62 @@
                 }
               ],
               "hash": "If01rvxp6rWZYZjYegrw0JJ70nk7VQ5TEF2QircQCXQ="
+            },
+            "2": {
+              "permissions": [
+                {
+                  "type": "awsAccounts",
+                  "accounts": [
+                    "326238338403"
+                  ]
+                },
+                {
+                  "type": "private"
+                }
+              ],
+              "hash": "sQDA9WltvzQcHZ9QGrV0f+Y7X7dl4UDmgTScwksCagI="
+            },
+            "3": {
+              "permissions": [
+                {
+                  "type": "awsAccounts",
+                  "accounts": [
+                    "326238338403"
+                  ]
+                },
+                {
+                  "type": "private"
+                }
+              ],
+              "hash": "L+vEF5cclp7LYxTaE3XqJNMHLIGg3Nz3igWX7LuNiHc="
+            },
+            "4": {
+              "permissions": [
+                {
+                  "type": "awsAccounts",
+                  "accounts": [
+                    "326238338403"
+                  ]
+                },
+                {
+                  "type": "private"
+                }
+              ],
+              "hash": "WQMAAzJ2PqRBlykAY+LylwJrh/n1MPZUfBBodqgd1EI="
+            },
+            "5": {
+              "permissions": [
+                {
+                  "type": "awsAccounts",
+                  "accounts": [
+                    "326238338403"
+                  ]
+                },
+                {
+                  "type": "private"
+                }
+              ],
+              "hash": "UvkyYXA6nFYB72N4Ljjbr2URhbQ3EvEbLi7mb/YFQ4o="
             }
           }
         }

@@ -60,7 +60,16 @@
       "Properties": {
         "Action": "lambda:GetLayerVersion",
         "LayerVersionArn": {
-          "Ref": "LambdaLayer"
+          "Fn::Sub": [
+            "arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:layer:${layerName}-${env}:${layerVersion}",
+            {
+              "layerName": "pixelchessUtilityLayer",
+              "env": {
+                "Ref": "env"
+              },
+              "layerVersion": "1"
+            }
+          ]
         },
         "Principal": {
           "Ref": "AWS::AccountId"
@@ -68,6 +77,157 @@
       }
     },
     "LambdaLayerPermissionawsAccounts3262383384031": {
+      "Type": "AWS::Lambda::LayerVersionPermission",
+      "Properties": {
+        "Action": "lambda:GetLayerVersion",
+        "LayerVersionArn": {
+          "Fn::Sub": [
+            "arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:layer:${layerName}-${env}:${layerVersion}",
+            {
+              "layerName": "pixelchessUtilityLayer",
+              "env": {
+                "Ref": "env"
+              },
+              "layerVersion": "1"
+            }
+          ]
+        },
+        "Principal": "326238338403"
+      }
+    },
+    "LambdaLayerPermissionprivate2": {
+      "Type": "AWS::Lambda::LayerVersionPermission",
+      "Properties": {
+        "Action": "lambda:GetLayerVersion",
+        "LayerVersionArn": {
+          "Fn::Sub": [
+            "arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:layer:${layerName}-${env}:${layerVersion}",
+            {
+              "layerName": "pixelchessUtilityLayer",
+              "env": {
+                "Ref": "env"
+              },
+              "layerVersion": "2"
+            }
+          ]
+        },
+        "Principal": {
+          "Ref": "AWS::AccountId"
+        }
+      }
+    },
+    "LambdaLayerPermissionawsAccounts3262383384032": {
+      "Type": "AWS::Lambda::LayerVersionPermission",
+      "Properties": {
+        "Action": "lambda:GetLayerVersion",
+        "LayerVersionArn": {
+          "Fn::Sub": [
+            "arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:layer:${layerName}-${env}:${layerVersion}",
+            {
+              "layerName": "pixelchessUtilityLayer",
+              "env": {
+                "Ref": "env"
+              },
+              "layerVersion": "2"
+            }
+          ]
+        },
+        "Principal": "326238338403"
+      }
+    },
+    "LambdaLayerPermissionprivate3": {
+      "Type": "AWS::Lambda::LayerVersionPermission",
+      "Properties": {
+        "Action": "lambda:GetLayerVersion",
+        "LayerVersionArn": {
+          "Fn::Sub": [
+            "arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:layer:${layerName}-${env}:${layerVersion}",
+            {
+              "layerName": "pixelchessUtilityLayer",
+              "env": {
+                "Ref": "env"
+              },
+              "layerVersion": "3"
+            }
+          ]
+        },
+        "Principal": {
+          "Ref": "AWS::AccountId"
+        }
+      }
+    },
+    "LambdaLayerPermissionawsAccounts3262383384033": {
+      "Type": "AWS::Lambda::LayerVersionPermission",
+      "Properties": {
+        "Action": "lambda:GetLayerVersion",
+        "LayerVersionArn": {
+          "Fn::Sub": [
+            "arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:layer:${layerName}-${env}:${layerVersion}",
+            {
+              "layerName": "pixelchessUtilityLayer",
+              "env": {
+                "Ref": "env"
+              },
+              "layerVersion": "3"
+            }
+          ]
+        },
+        "Principal": "326238338403"
+      }
+    },
+    "LambdaLayerPermissionprivate4": {
+      "Type": "AWS::Lambda::LayerVersionPermission",
+      "Properties": {
+        "Action": "lambda:GetLayerVersion",
+        "LayerVersionArn": {
+          "Fn::Sub": [
+            "arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:layer:${layerName}-${env}:${layerVersion}",
+            {
+              "layerName": "pixelchessUtilityLayer",
+              "env": {
+                "Ref": "env"
+              },
+              "layerVersion": "4"
+            }
+          ]
+        },
+        "Principal": {
+          "Ref": "AWS::AccountId"
+        }
+      }
+    },
+    "LambdaLayerPermissionawsAccounts3262383384034": {
+      "Type": "AWS::Lambda::LayerVersionPermission",
+      "Properties": {
+        "Action": "lambda:GetLayerVersion",
+        "LayerVersionArn": {
+          "Fn::Sub": [
+            "arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:layer:${layerName}-${env}:${layerVersion}",
+            {
+              "layerName": "pixelchessUtilityLayer",
+              "env": {
+                "Ref": "env"
+              },
+              "layerVersion": "4"
+            }
+          ]
+        },
+        "Principal": "326238338403"
+      }
+    },
+    "LambdaLayerPermissionprivate5": {
+      "Type": "AWS::Lambda::LayerVersionPermission",
+      "Properties": {
+        "Action": "lambda:GetLayerVersion",
+        "LayerVersionArn": {
+          "Ref": "LambdaLayer"
+        },
+        "Principal": {
+          "Ref": "AWS::AccountId"
+        }
+      }
+    },
+    "LambdaLayerPermissionawsAccounts3262383384035": {
       "Type": "AWS::Lambda::LayerVersionPermission",
       "Properties": {
         "Action": "lambda:GetLayerVersion",
