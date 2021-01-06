@@ -9,6 +9,14 @@
     },
     "env": {
       "Type": "String"
+    },
+    "functionpixelchessResolveMatchPlayerIdsName": {
+      "Type": "String",
+      "Default": "functionpixelchessResolveMatchPlayerIdsName"
+    },
+    "functionpixelchessUtilityLayerArn": {
+      "Type": "String",
+      "Default": "functionpixelchessUtilityLayerArn"
     }
   },
   "Conditions": {
@@ -55,6 +63,9 @@
             },
             "REGION": {
               "Ref": "AWS::Region"
+            },
+            "FUNCTION_PIXELCHESSRESOLVEMATCHPLAYERIDS_NAME": {
+              "Ref": "functionpixelchessResolveMatchPlayerIdsName"
             }
           }
         },
@@ -65,11 +76,15 @@
           ]
         },
         "Runtime": "nodejs12.x",
-        "Layers": [],
+        "Layers": [
+          {
+            "Fn::Sub": "arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:layer:pixelchessUtilityLayer-dev:1"
+          }
+        ],
         "Timeout": "25",
         "Code": {
           "S3Bucket": "amplify-pixelchess-dev-225302-deployment",
-          "S3Key": "amplify-builds/pixelchessResolveGraphQLField-2b47584332635a633934-build.zip"
+          "S3Key": "amplify-builds/pixelchessResolveGraphQLField-42564f672f3432706e30-build.zip"
         }
       }
     },
@@ -150,6 +165,54 @@
                   }
                 ]
               }
+            }
+          ]
+        }
+      }
+    },
+    "AmplifyResourcesPolicy": {
+      "DependsOn": [
+        "LambdaExecutionRole"
+      ],
+      "Type": "AWS::IAM::Policy",
+      "Properties": {
+        "PolicyName": "amplify-lambda-execution-policy",
+        "Roles": [
+          {
+            "Ref": "LambdaExecutionRole"
+          }
+        ],
+        "PolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Action": [
+                "lambda:Get*",
+                "lambda:List*",
+                "lambda:Invoke*"
+              ],
+              "Resource": [
+                {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:aws:lambda:",
+                      {
+                        "Ref": "AWS::Region"
+                      },
+                      ":",
+                      {
+                        "Ref": "AWS::AccountId"
+                      },
+                      ":function:",
+                      {
+                        "Ref": "functionpixelchessResolveMatchPlayerIdsName"
+                      }
+                    ]
+                  ]
+                }
+              ]
             }
           ]
         }

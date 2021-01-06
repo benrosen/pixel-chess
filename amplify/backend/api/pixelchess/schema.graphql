@@ -1,38 +1,45 @@
-# TODO validate connection with lambda resolver before creating it
-type Connection
-  @auth(rules: [{ allow: public, provider: iam, operations: [create] }])
-  @key(
-    name: "ByMatchId"
-    fields: ["matchId"]
-    queryField: "connectionsByMatchId"
-  )
-  @model {
-  id: ID!
-  matchId: ID!
-  match: Match @connection(fields: ["matchId"])
-}
-
-type Match
+type Game
   @auth(
     rules: [
       { allow: public, provider: iam, operations: [create] }
-      { allow: owner, ownerField: "playerIds", operations: [read] }
+      { allow: private, provider: iam, operations: [read] }
+      { allow: owner, ownerField: "players", operations: [read] }
     ]
   )
-  @model {
+  @model(mutations: null, subscriptions: null)
+  @versioned {
   id: ID!
-  connections: [Connection!]! @connection(keyName: "ByMatchId", fields: ["id"])
-  moves: [Move!]! @connection(keyName: "ByMatchId", fields: ["id"])
-  playerIds: [String!]! @function(name: "pixelchessResolveGraphQLField")
+  moveText: String
+    @auth(
+      rules: [{ allow: owner, ownerField: "players", operations: [update] }]
+    )
+  players: [String!]!
+    @auth(rules: [{ allow: public, provider: iam, operations: [update] }])
+  status: Status!
+    @auth(rules: [{ allow: private, provider: iam, operations: [update] }])
 }
 
-# TODO validate move with lambda resolver before creating it
-type Move
-  @auth(rules: [{ allow: public, provider: iam, operations: [create] }])
-  @key(name: "ByMatchId", fields: ["matchId"], queryField: "movesByMatchId")
-  @model {
+# TODO configure lambda resolvers for these mutations
+type Mutation {
+  createGame: Game
+  updateGame(input: UpdateGameInput): Game
+}
+
+enum Status {
+  PENDING
+  UNDERWAY
+  DRAW
+  BLACK_WON
+  WHITE_WON
+}
+
+type Subscription {
+  onUpdateGame(owner: String): Game @aws_subscribe(mutations: ["updateGame"])
+}
+
+input UpdateGameInput {
   id: ID!
-  matchId: ID!
-  match: Match @connection(fields: ["matchId"])
-  notation: String!
+  moveText: String
+  players: [String]
+  status: Status
 }
