@@ -1,8 +1,8 @@
 type Game
   @auth(
     rules: [
+      { allow: private, provider: iam }
       { allow: public, provider: iam, operations: [create] }
-      { allow: private, provider: iam, operations: [read] }
       { allow: owner, ownerField: "players", operations: [read] }
     ]
   )
