@@ -28,32 +28,6 @@
     }
   },
   "function": {
-    "pixelchessResolveGraphQLField": {
-      "build": true,
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda",
-      "dependsOn": [
-        {
-          "category": "function",
-          "resourceName": "pixelchessResolveMatchPlayerIds",
-          "attributes": [
-            "Name"
-          ]
-        },
-        {
-          "category": "function",
-          "resourceName": "pixelchessUtilityLayer",
-          "attributes": [
-            "Arn"
-          ]
-        }
-      ]
-    },
-    "pixelchessResolveMatchPlayerIds": {
-      "build": true,
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda"
-    },
     "pixelchessUtilityLayer": {
       "providerPlugin": "awscloudformation",
       "service": "LambdaLayer",
