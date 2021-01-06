@@ -21,8 +21,8 @@ type Game
 
 # TODO configure lambda resolvers for these mutations
 type Mutation {
-  createGame: Game
-  updateGame(input: UpdateGameInput): Game
+  createGame: Game @aws_iam @aws_cognito_user_pools
+  updateGame(input: UpdateGameInput): Game @aws_iam @aws_cognito_user_pools
 }
 
 enum Status {
