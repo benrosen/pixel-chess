@@ -1,6 +1,6 @@
 import { GameComponent } from "phaser-react-tools";
+import GameManager from "./components/GameManager";
 import { Grid } from "semantic-ui-react";
-import MatchManager from "./components/MatchManager";
 import React from "react";
 import colors from "./colors";
 import gameConfig from "./gameConfig";
@@ -23,9 +23,9 @@ export default function App() {
     >
       <Grid.Row textAlign="center">
         <Grid.Column>
-          <MatchManager>
+          <GameManager>
             <GameComponent config={gameConfig}></GameComponent>
-          </MatchManager>
+          </GameManager>
         </Grid.Column>
       </Grid.Row>
     </Grid>
