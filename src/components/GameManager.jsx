@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 
 import { GameProvider } from "../contexts/GameContext";
+import createGame from "../functions/createGame";
+import redirectToGameUrl from "../functions/redirectToGameUrl";
 import { useRouteMatch } from "react-router-dom";
 
 export default function GameManager({ children }) {
@@ -16,7 +18,7 @@ export default function GameManager({ children }) {
       // TODO query the game
       // TODO subscribe to the game
     } else {
-      // TODO create game and redirect to /game.id
+      createGame().then((game) => redirectToGameUrl(game));
     }
   }, [routeMatch]);
 
