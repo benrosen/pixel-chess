@@ -1,9 +1,20 @@
+import { API, graphqlOperation } from "aws-amplify";
+
 /**
  * Create a game via the GraphQL API.
  *
- * @returns {PixelChess.Game} The newly created game.
+ * @returns {import("../typedefs/PixelChessGame").PixelChessGame} The newly created game.
  */
 export default async function createGame() {
-  console.log("create game");
-  return { id: "abc123" };
+  return API.graphql(
+    graphqlOperation(/* GraphQL */ `
+      mutation CreateGame {
+        createGame {
+          id
+        }
+      }
+    `)
+  ).then((response) => {
+    return response.data.createGame;
+  });
 }
