@@ -2,7 +2,6 @@ input AppendMoveTextInput {
   move: Move!
 }
 
-# TODO connection input, mutations, subscriptions, etc.
 # TODO configure createConnection resolver
 # TODO configure deleteConnection resolver
 # TODO update Game when connection is created/deleted
@@ -17,6 +16,20 @@ type Connection
   @model(mutations: null, subscriptions: null) {
   id: ID!
   gameId: ID!
+}
+
+input CreateConnectionInput {
+  id: ID!
+  gameId: ID!
+}
+
+input CreateMoveInput {
+  id: ID!
+  gameId: ID!
+}
+
+input DeleteConnectionInput {
+  id: ID!
 }
 
 type Game
@@ -36,10 +49,9 @@ type Game
   white: String
 }
 
-# TODO connection input, mutations, subscriptions, etc.
 # TODO configure createMove resolver
 # TODO configure deleteMove resolver
-# TODO update Game when connection is created/deleted
+# TODO update Game when move is created/deleted
 type Move
   @aws_iam
   @auth(rules: [{ allow: public, provider: iam, operations: [create] }])
@@ -51,12 +63,16 @@ type Move
 
 # TODO create resolvers for all of these mutations
 # TODO remove vanilla updateGame mutation resolvers and references in CustomResources.json
+# TODO try to use @aws_iam on the type instead of all the fields
 type Mutation {
+  appendMoveText(input: AppendMoveTextInput!): Game @aws_iam
+  createConnection(input: CreateConnectionInput!): Connection @aws_iam
   createGame: Game @aws_iam
-  appendMoveText(input: AppendMoveTextInput): Game @aws_iam
-  setBlackPlayer(input: SetBlackPlayerInput): Game @aws_iam
-  setWhitePlayer(input: SetWhitePlayerInput): Game @aws_iam
-  updateStatus(input: UpdateStatusInput): Game @aws_iam
+  createMove(input: CreateMoveInput!): Move @aws_iam
+  deleteConnection(input: DeleteConnectionInput!): Connection @aws_iam
+  setBlackPlayer(input: SetBlackPlayerInput!): Game @aws_iam
+  setWhitePlayer(input: SetWhitePlayerInput!): Game @aws_iam
+  updateStatus(input: UpdateStatusInput!): Game @aws_iam
 }
 
 input SetBlackPlayerInput {
