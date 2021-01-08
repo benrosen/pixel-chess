@@ -1,27 +1,28 @@
 type Game
+  @aws_iam
   @auth(
     rules: [
-      { allow: private, provider: iam }
+      # { allow: private, provider: iam }
       { allow: public, provider: iam, operations: [create] }
-      { allow: owner, ownerField: "players", operations: [read] }
+      # { allow: owner, ownerField: "players", operations: [read] }
     ]
   )
   @model(mutations: null, subscriptions: null)
   @versioned {
   id: ID!
   moveText: String
-    @auth(
-      rules: [{ allow: owner, ownerField: "players", operations: [update] }]
-    )
+  # @auth(
+  #   rules: [{ allow: owner, ownerField: "players", operations: [update] }]
+  # )
   players: [String!]!
-    @auth(rules: [{ allow: public, provider: iam, operations: [update] }])
+  # @auth(rules: [{ allow: public, provider: iam, operations: [update] }])
   status: Status!
-    @auth(rules: [{ allow: private, provider: iam, operations: [update] }])
+  # @auth(rules: [{ allow: private, provider: iam, operations: [update] }])
 }
 
 type Mutation {
-  createGame: Game @aws_iam @aws_cognito_user_pools
-  updateGame(input: UpdateGameInput): Game @aws_iam @aws_cognito_user_pools
+  createGame: Game @aws_iam
+  updateGame(input: UpdateGameInput): Game
 }
 
 enum Status {
