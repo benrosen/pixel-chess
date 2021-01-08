@@ -19,7 +19,6 @@ type Game
     @auth(rules: [{ allow: private, provider: iam, operations: [update] }])
 }
 
-# TODO configure lambda resolvers for these mutations
 type Mutation {
   createGame: Game @aws_iam @aws_cognito_user_pools
   updateGame(input: UpdateGameInput): Game @aws_iam @aws_cognito_user_pools
@@ -34,7 +33,7 @@ enum Status {
 }
 
 type Subscription {
-  onUpdateGame(owner: String): Game @aws_subscribe(mutations: ["updateGame"])
+  onUpdateGame(id: ID!): Game @aws_subscribe(mutations: ["updateGame"])
 }
 
 input UpdateGameInput {
