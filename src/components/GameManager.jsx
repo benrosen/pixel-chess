@@ -3,6 +3,8 @@ import { useHistory, useRouteMatch } from "react-router-dom";
 
 import { GameProvider } from "../contexts/GameContext";
 import createGame from "../functions/createGame";
+import createGameSubscription from "../functions/createGameSubscription";
+import joinGame from "../functions/joinGame";
 
 export default function GameManager({ children }) {
   const GAME_ID = "gameId";
@@ -12,17 +14,32 @@ export default function GameManager({ children }) {
 
   useEffect(() => {
     const pathParameters = routeMatch?.params;
-    const gameId = pathParameters ? pathParameters[GAME_ID] : undefined;
+    const id = pathParameters ? pathParameters[GAME_ID] : undefined;
 
-    if (gameId) {
-      // TODO query the game
-      // TODO subscribe to the game
+    let gameSubscription = undefined;
+
+    if (id) {
+      joinGame(id)
+        .then((newGame) => {
+          gameSubscription = createGameSubscription(newGame, setGame);
+        })
+        .catch((error) => {
+          // TODO handle the various errors that may be thrown
+          console.log(error);
+        });
     } else {
-      createGame().then((game) => {
-        history.push(game.id);
-      });
+      createGame()
+        .then((game) => {
+          history.push(game.id);
+        })
+        .catch((error) => {
+          // TODO handle the various errors that may be thrown
+          console.log(error);
+        });
     }
-  }, [routeMatch]);
+
+    return () => gameSubscription?.unsubscribe();
+  }, [history, routeMatch]);
 
   return <GameProvider value={game}>{children}</GameProvider>;
 }
