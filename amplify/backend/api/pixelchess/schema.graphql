@@ -50,8 +50,7 @@ type Game
 }
 
 # TODO configure createMove resolver
-# TODO configure deleteMove resolver
-# TODO update Game when move is created/deleted
+# TODO update Game when move is created
 type Move
   @aws_iam
   @auth(rules: [{ allow: public, provider: iam, operations: [create] }])
