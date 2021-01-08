@@ -1,28 +1,70 @@
+input AppendMoveTextInput {
+  move: Move!
+}
+
+# TODO connection input, mutations, subscriptions, etc.
+# TODO configure createConnection resolver
+# TODO configure deleteConnection resolver
+# TODO update Game when connection is created/deleted
+type Connection
+  @aws_iam
+  @auth(
+    rules: [
+      { allow: public, provider: iam, operations: [create] }
+      { allow: owner, operations: [delete] }
+    ]
+  )
+  @model(mutations: null, subscriptions: null) {
+  id: ID!
+  gameId: ID!
+}
+
 type Game
   @aws_iam
   @auth(
     rules: [
-      # { allow: private, provider: iam }
+      { allow: private, provider: iam, operations: [update] }
       { allow: public, provider: iam, operations: [create] }
-      # { allow: owner, ownerField: "players", operations: [read] }
     ]
   )
   @model(mutations: null, subscriptions: null)
   @versioned {
   id: ID!
+  black: String
   moveText: String
-  # @auth(
-  #   rules: [{ allow: owner, ownerField: "players", operations: [update] }]
-  # )
-  players: [String!]!
-  # @auth(rules: [{ allow: public, provider: iam, operations: [update] }])
   status: Status!
-  # @auth(rules: [{ allow: private, provider: iam, operations: [update] }])
+  white: String
 }
 
+# TODO connection input, mutations, subscriptions, etc.
+# TODO configure createMove resolver
+# TODO configure deleteMove resolver
+# TODO update Game when connection is created/deleted
+type Move
+  @aws_iam
+  @auth(rules: [{ allow: public, provider: iam, operations: [create] }])
+  @model(mutations: null, subscriptions: null) {
+  id: ID!
+  gameId: ID!
+  moveText: String!
+}
+
+# TODO create resolvers for all of these mutations
+# TODO remove vanilla updateGame mutation resolvers and references in CustomResources.json
 type Mutation {
   createGame: Game @aws_iam
-  updateGame(input: UpdateGameInput): Game
+  appendMoveText(input: AppendMoveTextInput): Game @aws_iam
+  setBlackPlayer(input: SetBlackPlayerInput): Game @aws_iam
+  setWhitePlayer(input: SetWhitePlayerInput): Game @aws_iam
+  updateStatus(input: UpdateStatusInput): Game @aws_iam
+}
+
+input SetBlackPlayerInput {
+  gameId: ID!
+}
+
+input SetWhitePlayerInput {
+  gameId: ID!
 }
 
 enum Status {
@@ -34,12 +76,18 @@ enum Status {
 }
 
 type Subscription {
-  onUpdateGame(id: ID!): Game @aws_subscribe(mutations: ["updateGame"])
+  onUpdateGame(id: ID!): Game
+    @aws_subscribe(
+      mutations: [
+        "appendMoveText"
+        "setBlackPlayer"
+        "setWhitePlayer"
+        "updateStatus"
+      ]
+    )
 }
 
-input UpdateGameInput {
-  id: ID!
-  moveText: String
-  players: [String]
-  status: Status
+input UpdateStatusInput {
+  gameId: ID!
+  status: Status!
 }
