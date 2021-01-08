@@ -21,7 +21,6 @@ export default async function createGame() {
     .catch((error) => {
       // TODO handle the various errors that may be thrown
       console.log(error);
-      return { id: "123456" };
     });
 }
 
