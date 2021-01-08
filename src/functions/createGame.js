@@ -1,4 +1,4 @@
-import { API, graphqlOperation } from "aws-amplify";
+import { API } from "aws-amplify";
 
 /**
  * Create a game via the GraphQL API.
@@ -6,21 +6,24 @@ import { API, graphqlOperation } from "aws-amplify";
  * @returns {*} The newly created game.
  */
 export default async function createGame() {
-  return API.graphql(
-    graphqlOperation(/* GraphQL */ `
+  return API.graphql({
+    query: /* GraphQL */ `
       mutation CreateGame {
         createGame {
           id
         }
       }
-    `)
-  )
+    `,
+  })
     .then((response) => {
       return response.data.createGame;
     })
     .catch((error) => {
-      // TODO handle error
+      // TODO handle the various errors that may be thrown
       console.log(error);
       return { id: "123456" };
     });
 }
+
+// TODO configure and document errors that may be thrown
+// TODO configure typedef for game
