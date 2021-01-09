@@ -1,5 +1,11 @@
 {
   "AppSyncApiName": "pixelchess",
   "DynamoDBBillingMode": "PAY_PER_REQUEST",
-  "DynamoDBEnableServerSideEncryption": false
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthCognitoUserPoolId": {
+    "Fn::GetAtt": [
+      "authpixelchessff1759b5ff1759b5",
+      "Outputs.UserPoolId"
+    ]
+  }
 }

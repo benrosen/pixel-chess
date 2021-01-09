@@ -1,6 +1,6 @@
 input AppendMoveTextInput {
   gameId: ID!
-  moveText: string!
+  moveText: String!
 }
 
 # TODO configure createConnection resolver
@@ -92,6 +92,7 @@ enum Status {
 
 type Subscription {
   onUpdateGame(id: ID!): Game
+    @aws_iam
     @aws_subscribe(
       mutations: [
         "appendMoveText"

@@ -5,12 +5,13 @@ export const onUpdateGame = /* GraphQL */ `
   subscription OnUpdateGame($id: ID!) {
     onUpdateGame(id: $id) {
       id
+      black
+      moveText
+      status
+      white
       createdAt
       updatedAt
       version
-      moveText
-      players
-      status
     }
   }
 `;

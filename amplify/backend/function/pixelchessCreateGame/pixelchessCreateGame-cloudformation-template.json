@@ -110,7 +110,7 @@
         "Timeout": "25",
         "Code": {
           "S3Bucket": "amplify-pixelchess-dev-225302-deployment",
-          "S3Key": "amplify-builds/pixelchessCreateGame-4f2f546d413739634751-build.zip"
+          "S3Key": "amplify-builds/pixelchessCreateGame-335936534c38624d6761-build.zip"
         }
       }
     },
