@@ -21,6 +21,7 @@ const documentClient = new AWS.DynamoDB.DocumentClient();
  * Create a game record in the DynamoDB table and return the result.
  *
  * @param {*} event The Lambda event to be handled.
+ * @returns The newly created game.
  */
 exports.handler = ({ id, identity, timestamp }) => {
   const game = {
@@ -35,3 +36,5 @@ exports.handler = ({ id, identity, timestamp }) => {
   console.log(game);
   return createRecord(documentClient, GAME_TABLE_NAME, game);
 };
+
+// TODO document with @throw tag
