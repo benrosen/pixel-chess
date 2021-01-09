@@ -4,7 +4,7 @@
     "resourceNameTruncated": "pixelcff1759b5",
     "userPoolName": "pixelchessff1759b5_userpool_ff1759b5",
     "autoVerifiedAttributes": [
-        "phone_number"
+        "email"
     ],
     "mfaConfiguration": "OFF",
     "mfaTypes": [
