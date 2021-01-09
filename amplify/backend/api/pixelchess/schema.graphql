@@ -1,5 +1,6 @@
 input AppendMoveTextInput {
-  move: Move!
+  gameId: ID!
+  moveText: string!
 }
 
 # TODO configure createConnection resolver
@@ -61,7 +62,6 @@ type Move
 }
 
 # TODO create resolvers for all of these mutations
-# TODO remove vanilla updateGame mutation resolvers and references in CustomResources.json
 # TODO try to use @aws_iam on the type instead of all the fields
 type Mutation {
   appendMoveText(input: AppendMoveTextInput!): Game @aws_iam
