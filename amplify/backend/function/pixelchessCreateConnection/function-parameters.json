@@ -1,3 +1,15 @@
 {
-  "lambdaLayers": []
+  "lambdaLayers": [],
+  "permissions": {
+    "function": {
+      "pixelchessExecuteGraphQLOperation": [
+        "read"
+      ]
+    },
+    "storage": {
+      "Connection:@model(appsync)": [
+        "create"
+      ]
+    }
+  }
 }
