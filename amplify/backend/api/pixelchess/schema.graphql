@@ -20,12 +20,10 @@ type Connection
 }
 
 input CreateConnectionInput {
-  id: ID!
   gameId: ID!
 }
 
 input CreateMoveInput {
-  id: ID!
   gameId: ID!
 }
 
@@ -69,16 +67,12 @@ type Mutation {
   createGame: Game @aws_iam
   createMove(input: CreateMoveInput!): Move @aws_iam
   deleteConnection(input: DeleteConnectionInput!): Connection @aws_iam
-  setBlackPlayer(input: SetBlackPlayerInput!): Game @aws_iam
-  setWhitePlayer(input: SetWhitePlayerInput!): Game @aws_iam
+  setBlackPlayer(input: SetPlayerInput!): Game @aws_iam
+  setWhitePlayer(input: SetPlayerInput!): Game @aws_iam
   updateStatus(input: UpdateStatusInput!): Game @aws_iam
 }
 
-input SetBlackPlayerInput {
-  gameId: ID!
-}
-
-input SetWhitePlayerInput {
+input SetPlayerInput {
   gameId: ID!
 }
 
