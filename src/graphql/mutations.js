@@ -20,6 +20,16 @@ export const createConnection = /* GraphQL */ `
     createConnection(input: $input) {
       id
       gameId
+      game {
+        id
+        black
+        moveText
+        status
+        white
+        createdAt
+        updatedAt
+        version
+      }
       createdAt
       updatedAt
       owner
@@ -56,6 +66,16 @@ export const deleteConnection = /* GraphQL */ `
     deleteConnection(input: $input) {
       id
       gameId
+      game {
+        id
+        black
+        moveText
+        status
+        white
+        createdAt
+        updatedAt
+        version
+      }
       createdAt
       updatedAt
       owner

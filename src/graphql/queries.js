@@ -6,6 +6,16 @@ export const getConnection = /* GraphQL */ `
     getConnection(id: $id) {
       id
       gameId
+      game {
+        id
+        black
+        moveText
+        status
+        white
+        createdAt
+        updatedAt
+        version
+      }
       createdAt
       updatedAt
       owner
@@ -22,6 +32,16 @@ export const listConnections = /* GraphQL */ `
       items {
         id
         gameId
+        game {
+          id
+          black
+          moveText
+          status
+          white
+          createdAt
+          updatedAt
+          version
+        }
         createdAt
         updatedAt
         owner

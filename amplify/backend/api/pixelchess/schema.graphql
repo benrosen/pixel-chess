@@ -17,6 +17,7 @@ type Connection
   @model(mutations: null, subscriptions: null) {
   id: ID!
   gameId: ID!
+  game: Game @connection(fields: ["gameId"]) @aws_iam
 }
 
 input CreateConnectionInput {
