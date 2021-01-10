@@ -62,7 +62,16 @@
     "pixelchessCreateConnection": {
       "build": true,
       "providerPlugin": "awscloudformation",
-      "service": "Lambda"
+      "service": "Lambda",
+      "dependsOn": [
+        {
+          "category": "api",
+          "resourceName": "pixelchess",
+          "attributes": [
+            "GraphQLAPIIdOutput"
+          ]
+        }
+      ]
     },
     "pixelchessCreateMove": {
       "build": true,
@@ -88,6 +97,28 @@
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
+    },
+    "pixelchessExecuteGraphQLOperation": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "dependsOn": [
+        {
+          "category": "api",
+          "resourceName": "pixelchess",
+          "attributes": [
+            "GraphQLAPIIdOutput",
+            "GraphQLAPIEndpointOutput"
+          ]
+        },
+        {
+          "category": "function",
+          "resourceName": "pixelchessUtilityLayer",
+          "attributes": [
+            "Arn"
+          ]
+        }
+      ]
     }
   },
   "auth": {
