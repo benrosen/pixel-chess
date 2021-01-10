@@ -29,7 +29,7 @@ module.exports = (gameId, willPlayWhite, lambda, graphQLFunctionName) => {
       }
     `,
     operationName: operationName,
-    input: { gameId: gameId },
+    item: { gameId: gameId },
   });
 };
 
