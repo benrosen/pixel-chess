@@ -63,7 +63,7 @@ export const deleteConnection = /* GraphQL */ `
   }
 `;
 export const setBlackPlayer = /* GraphQL */ `
-  mutation SetBlackPlayer($input: SetBlackPlayerInput!) {
+  mutation SetBlackPlayer($input: SetPlayerInput!) {
     setBlackPlayer(input: $input) {
       id
       black
@@ -77,7 +77,7 @@ export const setBlackPlayer = /* GraphQL */ `
   }
 `;
 export const setWhitePlayer = /* GraphQL */ `
-  mutation SetWhitePlayer($input: SetWhitePlayerInput!) {
+  mutation SetWhitePlayer($input: SetPlayerInput!) {
     setWhitePlayer(input: $input) {
       id
       black
