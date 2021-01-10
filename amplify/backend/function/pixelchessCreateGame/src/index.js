@@ -23,11 +23,10 @@ const documentClient = new AWS.DynamoDB.DocumentClient();
  * @param {*} event The Lambda event to be handled.
  * @returns The newly created game.
  */
-exports.handler = ({ id, identity, timestamp }) => {
+exports.handler = ({ id, timestamp }) => {
   const game = {
     id: id,
     moveText: "",
-    players: [identity.username],
     status: "PENDING",
     createdAt: timestamp,
     updatedAt: timestamp,
