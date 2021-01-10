@@ -27,11 +27,21 @@ const lambda = new AWS.Lambda();
  */
 exports.handler = async (event) => {
   console.log(event);
+
   const { black, white } = await getPlayers(gameId);
 
   if (black && white) {
     // TODO throw game already full error
   } else {
+    const connection = {
+      id: event.id,
+      gameId: event.gameId,
+      createdAt: event.timestamp,
+      updatedAt: event.timestamp,
+      owner: event.identity,
+      __typename: "Game",
+    };
+
     // TODO create connection record in the database
 
     let willPlayWhite;
@@ -49,6 +59,8 @@ exports.handler = async (event) => {
     );
 
     console.log(connectedGame);
+
+    // TODO return newly created connection object
   }
 };
 
