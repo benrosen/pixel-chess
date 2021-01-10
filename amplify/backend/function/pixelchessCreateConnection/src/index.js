@@ -1,3 +1,24 @@
+/* Amplify Params - DO NOT EDIT
+	API_PIXELCHESS_CONNECTIONTABLE_ARN
+	API_PIXELCHESS_CONNECTIONTABLE_NAME
+	API_PIXELCHESS_GRAPHQLAPIIDOUTPUT
+	ENV
+	FUNCTION_PIXELCHESSEXECUTEGRAPHQLOPERATION_NAME
+	REGION
+Amplify Params - DO NOT EDIT */
+
+const getPlayers = require("./getPlayers");
+const setPlayer = require("./setPlayer");
+
+const { getEnvData } = require("aws-lambda-utility-layer");
+
+const EXECUTE_GRAPHQL_OPERATION = getEnvData(
+  process.env,
+  "FUNCTION_PIXELCHESSEXECUTEGRAPHQLOPERATION_NAME"
+);
+
+const lambda = new AWS.Lambda();
+
 /**
  * Create a connection to a game.
  *
@@ -5,17 +26,30 @@
  * @returns The newly created connection.
  */
 exports.handler = async (event) => {
-  // TODO implement createConnection
-  const response = {
-    statusCode: 200,
-    //  Uncomment below to enable CORS requests
-    //  headers: {
-    //      "Access-Control-Allow-Origin": "*",
-    //      "Access-Control-Allow-Headers": "*"
-    //  },
-    body: JSON.stringify("Hello from Lambda!"),
-  };
-  return response;
+  console.log(event);
+  const { black, white } = await getPlayers(gameId);
+
+  if (black && white) {
+    // TODO throw game already full error
+  } else {
+    // TODO create connection record in the database
+
+    let willPlayWhite;
+    if (!(black || white)) {
+      willPlayWhite = Math.random() > 0.5;
+    } else if (black) {
+      willPlayWhite = true;
+    }
+
+    const connectedGame = await setPlayer(
+      gameId,
+      willPlayWhite,
+      lambda,
+      EXECUTE_GRAPHQL_OPERATION
+    );
+
+    console.log(connectedGame);
+  }
 };
 
 // TODO document with @throw tag

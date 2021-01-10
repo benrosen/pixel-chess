@@ -65,6 +65,13 @@
       "service": "Lambda",
       "dependsOn": [
         {
+          "category": "function",
+          "resourceName": "pixelchessExecuteGraphQLOperation",
+          "attributes": [
+            "Name"
+          ]
+        },
+        {
           "category": "api",
           "resourceName": "pixelchess",
           "attributes": [
