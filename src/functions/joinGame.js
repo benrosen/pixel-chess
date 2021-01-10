@@ -3,29 +3,36 @@ import { API } from "aws-amplify";
 /**
  * Join a game.
  *
- * @param {string} gameId The id of the game to join.
+ * @param {string} id The id of the game to join.
  * @returns {*} The joined game.
  */
-export default function joinGame(gameId) {
+export default function joinGame(id) {
   return API.graphql({
     query: /* GraphQL */ `
-      mutation UpdateGame($input: UpdateGameInput) {
-        updateGame(input: $input) {
-          id
-          moveText
-          players
-          status
+      mutation CreateConnection($input: CreateConnectionInput!) {
+        createConnection(input: $input) {
+          game {
+            id
+            black
+            moveText
+            status
+            white
+            createdAt
+            updatedAt
+            version
+          }
         }
       }
     `,
-    variables: { input: { id: gameId } },
+    variables: { input: { gameId: id } },
   })
     .then((response) => {
-      return response.data.updateGame;
+      console.log(response);
+      // TODO return the connected game
     })
     .catch((error) => {
-      // TODO handle the various errors that may be thrown
       console.log(error);
+      // TODO raise error
     });
 }
 
