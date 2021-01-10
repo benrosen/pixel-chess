@@ -74,6 +74,7 @@ type Mutation {
 
 input SetPlayerInput {
   gameId: ID!
+  playerId: ID!
 }
 
 enum Status {
