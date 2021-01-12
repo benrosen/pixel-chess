@@ -17,6 +17,10 @@
     "functionpixelchessExecuteGraphQLOperationName": {
       "Type": "String",
       "Default": "functionpixelchessExecuteGraphQLOperationName"
+    },
+    "functionpixelchessUtilityLayerArn": {
+      "Type": "String",
+      "Default": "functionpixelchessUtilityLayerArn"
     }
   },
   "Conditions": {
@@ -109,7 +113,7 @@
         "Timeout": "25",
         "Code": {
           "S3Bucket": "amplify-pixelchess-dev-225302-deployment",
-          "S3Key": "amplify-builds/pixelchessCreateConnection-79435349324d43656634-build.zip"
+          "S3Key": "amplify-builds/pixelchessCreateConnection-3569542b6c442f754a61-build.zip"
         }
       }
     },

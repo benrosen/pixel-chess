@@ -1,3 +1,5 @@
+const { invokeLambda } = require("aws-lambda-utility-layer");
+
 /**
  * Get the players for a given game id.
  *
@@ -14,10 +16,9 @@ module.exports = (id, lambda, graphQLFunctionName) => {
         }
       }
     `,
-    operationName: "getGame",
+    operationName: "GetGame",
     item: { id: id },
   }).then((response) => {
-    console.log(response);
-    // TODO return response formatted as {black: "", white: ""}
+    return response.data.getGame;
   });
 };

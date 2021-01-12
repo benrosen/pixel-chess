@@ -18,14 +18,18 @@
           "type": "cicd"
         }
       },
+      "auth": {
+        "pixelchessff1759b5ff1759b5": {}
+      },
       "function": {
         "pixelchessUtilityLayer": {
           "deploymentBucketName": "amplify-pixelchess-dev-225302-deployment",
           "s3Key": "amplify-builds/pixelchessUtilityLayer-build.zip"
+        },
+        "pixelchessLambdaUtils": {
+          "deploymentBucketName": "amplify-pixelchess-dev-225302-deployment",
+          "s3Key": "amplify-builds/pixelchessLambdaUtils-build.zip"
         }
-      },
-      "auth": {
-        "pixelchessff1759b5ff1759b5": {}
       }
     },
     "nonCFNdata": {
@@ -101,6 +105,80 @@
                 }
               ],
               "hash": "UvkyYXA6nFYB72N4Ljjbr2URhbQ3EvEbLi7mb/YFQ4o="
+            },
+            "6": {
+              "permissions": [
+                {
+                  "type": "awsAccounts",
+                  "accounts": [
+                    "326238338403"
+                  ]
+                },
+                {
+                  "type": "private"
+                }
+              ],
+              "hash": "AQ5hcqIjiRfw0PkYMN/XEPfUkIoFQwwoZSiamal04Rs="
+            },
+            "7": {
+              "permissions": [
+                {
+                  "type": "awsAccounts",
+                  "accounts": [
+                    "326238338403"
+                  ]
+                },
+                {
+                  "type": "private"
+                }
+              ],
+              "hash": "qEy9XmVONyWf68DA/XKj6OiRfyg+kx/26+If0SfjBgE="
+            },
+            "8": {
+              "permissions": [
+                {
+                  "type": "awsAccounts",
+                  "accounts": [
+                    "326238338403"
+                  ]
+                },
+                {
+                  "type": "private"
+                }
+              ],
+              "hash": "Qr9hm+SqKj9r/7iO0jqV+dcq9RUVfiq3OS0oXachIAs="
+            },
+            "9": {
+              "permissions": [
+                {
+                  "type": "awsAccounts",
+                  "accounts": [
+                    "326238338403"
+                  ]
+                },
+                {
+                  "type": "private"
+                }
+              ],
+              "hash": "p1gHP8Ag7er2lb9KwjZMZ31XwvgxBTiDD3GikZWc+rU="
+            }
+          }
+        },
+        "pixelchessLambdaUtils": {
+          "layerVersionMap": {
+            "1": {
+              "permissions": [
+                {
+                  "type": "awsAccounts",
+                  "accounts": [
+                    "326238338403"
+                  ]
+                },
+                {
+                  "type": "private"
+                }
+              ],
+              "hash": "P9m9YLaLM+qQLPNGhPR6wIxu8yYTfP1cv7CLqLrVMpI="
             }
           }
         }

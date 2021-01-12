@@ -6,11 +6,5 @@
       ]
     }
   },
-  "lambdaLayers": [
-    {
-      "type": "ProjectLayer",
-      "resourceName": "pixelchessUtilityLayer",
-      "version": 5
-    }
-  ]
+  "lambdaLayers": []
 }
