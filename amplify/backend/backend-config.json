@@ -33,5 +33,12 @@
       "dependsOn": [],
       "customAuth": false
     }
+  },
+  "function": {
+    "pixelchessLambdaUtils": {
+      "providerPlugin": "awscloudformation",
+      "service": "LambdaLayer",
+      "build": true
+    }
   }
 }
