@@ -10,6 +10,17 @@
       "StackName": "amplify-pixelchess-dev-131434",
       "StackId": "arn:aws:cloudformation:us-east-1:326238338403:stack/amplify-pixelchess-dev-131434/08c0f110-5502-11eb-95ea-0e5c31da0605",
       "AmplifyAppId": "d1mumyea1tjxia"
+    },
+    "categories": {
+      "hosting": {
+        "amplifyhosting": {
+          "appId": "d1mumyea1tjxia",
+          "type": "cicd"
+        }
+      },
+      "auth": {
+        "pixelchess2d310b462d310b46": {}
+      }
     }
   }
 }
