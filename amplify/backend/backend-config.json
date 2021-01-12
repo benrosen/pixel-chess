@@ -61,6 +61,27 @@
           ]
         }
       ]
+    },
+    "pixelchessResolveCreateGameMutation": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "dependsOn": [
+        {
+          "category": "api",
+          "resourceName": "pixelchess",
+          "attributes": [
+            "GraphQLAPIIdOutput"
+          ]
+        },
+        {
+          "category": "function",
+          "resourceName": "pixelchessLambdaUtils",
+          "attributes": [
+            "Arn"
+          ]
+        }
+      ]
     }
   }
 }
