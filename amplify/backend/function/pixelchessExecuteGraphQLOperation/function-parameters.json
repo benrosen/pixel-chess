@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "api": {
+      "pixelchess": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ]
+    }
+  },
+  "lambdaLayers": [
+    {
+      "type": "ProjectLayer",
+      "resourceName": "pixelchessLambdaUtils",
+      "version": 1
+    }
+  ]
+}
