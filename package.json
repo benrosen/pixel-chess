@@ -3,11 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@aws-amplify/ui-react": "^0.2.33",
+    "@aws-amplify/ui-react": "^0.2.34",
     "@testing-library/jest-dom": "^5.11.8",
     "@testing-library/react": "^11.2.2",
     "@testing-library/user-event": "^12.6.0",
-    "aws-amplify": "^3.3.13",
+    "aws-amplify": "^3.3.14",
     "phaser": "^3.51.0",
     "phaser-react-tools": "^1.0.4",
     "phaser3-rex-plugins": "^1.1.36",

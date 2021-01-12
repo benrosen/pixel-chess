@@ -5,6 +5,7 @@
  * @returns The newly updated game.
  */
 exports.handler = async (event) => {
+  console.log(event);
   // TODO implement setWhitePlayer
   const response = {
     statusCode: 200,

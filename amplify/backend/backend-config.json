@@ -77,6 +77,13 @@
           "attributes": [
             "GraphQLAPIIdOutput"
           ]
+        },
+        {
+          "category": "function",
+          "resourceName": "pixelchessUtilityLayer",
+          "attributes": [
+            "Arn"
+          ]
         }
       ]
     },
@@ -93,7 +100,30 @@
     "pixelchessSetBlackPlayer": {
       "build": true,
       "providerPlugin": "awscloudformation",
-      "service": "Lambda"
+      "service": "Lambda",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "pixelchessGetPlayers",
+          "attributes": [
+            "Name"
+          ]
+        },
+        {
+          "category": "api",
+          "resourceName": "pixelchess",
+          "attributes": [
+            "GraphQLAPIIdOutput"
+          ]
+        },
+        {
+          "category": "function",
+          "resourceName": "pixelchessUtilityLayer",
+          "attributes": [
+            "Arn"
+          ]
+        }
+      ]
     },
     "pixelchessSetWhitePlayer": {
       "build": true,
@@ -126,6 +156,32 @@
           ]
         }
       ]
+    },
+    "pixelchessGetPlayers": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "pixelchessExecuteGraphQLOperation",
+          "attributes": [
+            "Name"
+          ]
+        },
+        {
+          "category": "function",
+          "resourceName": "pixelchessUtilityLayer",
+          "attributes": [
+            "Arn"
+          ]
+        }
+      ]
+    },
+    "pixelchessLambdaUtils": {
+      "providerPlugin": "awscloudformation",
+      "service": "LambdaLayer",
+      "build": true
     }
   },
   "auth": {

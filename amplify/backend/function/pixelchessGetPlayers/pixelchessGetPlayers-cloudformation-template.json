@@ -10,13 +10,9 @@
     "env": {
       "Type": "String"
     },
-    "functionpixelchessGetPlayersName": {
+    "functionpixelchessExecuteGraphQLOperationName": {
       "Type": "String",
-      "Default": "functionpixelchessGetPlayersName"
-    },
-    "apipixelchessGraphQLAPIIdOutput": {
-      "Type": "String",
-      "Default": "apipixelchessGraphQLAPIIdOutput"
+      "Default": "functionpixelchessExecuteGraphQLOperationName"
     },
     "functionpixelchessUtilityLayerArn": {
       "Type": "String",
@@ -45,12 +41,12 @@
         "FunctionName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "pixelchessSetBlackPlayer",
+            "pixelchessGetPlayers",
             {
               "Fn::Join": [
                 "",
                 [
-                  "pixelchessSetBlackPlayer",
+                  "pixelchessGetPlayers",
                   "-",
                   {
                     "Ref": "env"
@@ -68,37 +64,8 @@
             "REGION": {
               "Ref": "AWS::Region"
             },
-            "FUNCTION_PIXELCHESSGETPLAYERS_NAME": {
-              "Ref": "functionpixelchessGetPlayersName"
-            },
-            "API_PIXELCHESS_GAMETABLE_NAME": {
-              "Fn::ImportValue": {
-                "Fn::Sub": "${apipixelchessGraphQLAPIIdOutput}:GetAtt:GameTable:Name"
-              }
-            },
-            "API_PIXELCHESS_GAMETABLE_ARN": {
-              "Fn::Join": [
-                "",
-                [
-                  "arn:aws:dynamodb:",
-                  {
-                    "Ref": "AWS::Region"
-                  },
-                  ":",
-                  {
-                    "Ref": "AWS::AccountId"
-                  },
-                  ":table/",
-                  {
-                    "Fn::ImportValue": {
-                      "Fn::Sub": "${apipixelchessGraphQLAPIIdOutput}:GetAtt:GameTable:Name"
-                    }
-                  }
-                ]
-              ]
-            },
-            "API_PIXELCHESS_GRAPHQLAPIIDOUTPUT": {
-              "Ref": "apipixelchessGraphQLAPIIdOutput"
+            "FUNCTION_PIXELCHESSEXECUTEGRAPHQLOPERATION_NAME": {
+              "Ref": "functionpixelchessExecuteGraphQLOperationName"
             }
           }
         },
@@ -113,7 +80,7 @@
         "Timeout": "25",
         "Code": {
           "S3Bucket": "amplify-pixelchess-dev-225302-deployment",
-          "S3Key": "amplify-builds/pixelchessSetBlackPlayer-476b794d71747533542b-build.zip"
+          "S3Key": "amplify-builds/pixelchessGetPlayers-6637767a662b46786142-build.zip"
         }
       }
     },
@@ -123,12 +90,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "pixelchessLambdaRolefa25e009",
+            "pixelchessLambdaRole1ce1c549",
             {
               "Fn::Join": [
                 "",
                 [
-                  "pixelchessLambdaRolefa25e009",
+                  "pixelchessLambdaRole1ce1c549",
                   "-",
                   {
                     "Ref": "env"
@@ -236,60 +203,8 @@
                       },
                       ":function:",
                       {
-                        "Ref": "functionpixelchessGetPlayersName"
+                        "Ref": "functionpixelchessExecuteGraphQLOperationName"
                       }
-                    ]
-                  ]
-                }
-              ]
-            },
-            {
-              "Effect": "Allow",
-              "Action": [
-                "dynamodb:Update*",
-                "dynamodb:RestoreTable*"
-              ],
-              "Resource": [
-                {
-                  "Fn::Join": [
-                    "",
-                    [
-                      "arn:aws:dynamodb:",
-                      {
-                        "Ref": "AWS::Region"
-                      },
-                      ":",
-                      {
-                        "Ref": "AWS::AccountId"
-                      },
-                      ":table/",
-                      {
-                        "Fn::ImportValue": {
-                          "Fn::Sub": "${apipixelchessGraphQLAPIIdOutput}:GetAtt:GameTable:Name"
-                        }
-                      }
-                    ]
-                  ]
-                },
-                {
-                  "Fn::Join": [
-                    "",
-                    [
-                      "arn:aws:dynamodb:",
-                      {
-                        "Ref": "AWS::Region"
-                      },
-                      ":",
-                      {
-                        "Ref": "AWS::AccountId"
-                      },
-                      ":table/",
-                      {
-                        "Fn::ImportValue": {
-                          "Fn::Sub": "${apipixelchessGraphQLAPIIdOutput}:GetAtt:GameTable:Name"
-                        }
-                      },
-                      "/index/*"
                     ]
                   ]
                 }
