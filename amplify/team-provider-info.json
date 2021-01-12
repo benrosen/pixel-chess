@@ -20,6 +20,34 @@
       },
       "auth": {
         "pixelchess2d310b462d310b46": {}
+      },
+      "function": {
+        "pixelchessLambdaUtils": {
+          "deploymentBucketName": "amplify-pixelchess-dev-131434-deployment",
+          "s3Key": "amplify-builds/pixelchessLambdaUtils-build.zip"
+        }
+      }
+    },
+    "nonCFNdata": {
+      "function": {
+        "pixelchessLambdaUtils": {
+          "layerVersionMap": {
+            "1": {
+              "permissions": [
+                {
+                  "type": "awsAccounts",
+                  "accounts": [
+                    "326238338403"
+                  ]
+                },
+                {
+                  "type": "private"
+                }
+              ],
+              "hash": "P9m9YLaLM+qQLPNGhPR6wIxu8yYTfP1cv7CLqLrVMpI="
+            }
+          }
+        }
       }
     }
   }
