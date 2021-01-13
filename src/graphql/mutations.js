@@ -82,23 +82,9 @@ export const deleteConnection = /* GraphQL */ `
     }
   }
 `;
-export const setBlackPlayer = /* GraphQL */ `
-  mutation SetBlackPlayer($input: SetPlayerInput!) {
-    setBlackPlayer(input: $input) {
-      id
-      black
-      moveText
-      status
-      white
-      createdAt
-      updatedAt
-      version
-    }
-  }
-`;
-export const setWhitePlayer = /* GraphQL */ `
-  mutation SetWhitePlayer($input: SetPlayerInput!) {
-    setWhitePlayer(input: $input) {
+export const setPlayer = /* GraphQL */ `
+  mutation SetPlayer($input: SetPlayerInput!) {
+    setPlayer(input: $input) {
       id
       black
       moveText

@@ -68,14 +68,19 @@ type Mutation {
   createGame: Game @aws_iam
   createMove(input: CreateMoveInput!): Move @aws_iam
   deleteConnection(input: DeleteConnectionInput!): Connection @aws_iam
-  setBlackPlayer(input: SetPlayerInput!): Game @aws_iam
-  setWhitePlayer(input: SetPlayerInput!): Game @aws_iam
+  setPlayer(input: SetPlayerInput!): Game @aws_iam
   updateStatus(input: UpdateStatusInput!): Game @aws_iam
+}
+
+enum PlayerColor {
+  BLACK
+  WHITE
 }
 
 input SetPlayerInput {
   gameId: ID!
   playerId: ID!
+  playerColor: PlayerColor!
 }
 
 enum Status {
