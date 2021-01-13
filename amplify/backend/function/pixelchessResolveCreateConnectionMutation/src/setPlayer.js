@@ -17,16 +17,13 @@ module.exports = (
   playerId,
   willPlayWhite
 ) => {
-  const BLACK = "Black";
-  const WHITE = "White";
-
-  const color = willPlayWhite ? WHITE : BLACK;
-  const operationName = `Set${color}Player`;
+  const BLACK = "BLACK";
+  const WHITE = "WHITE";
 
   return invokeLambda(lambda, graphQLFunctionName, {
     operation: /* GraphQL */ `
-      mutation ${operationName}($input: SetPlayerInput!) {
-        set${color}Player(input: $input) {
+      mutation SetPlayer($input: SetPlayerInput!) {
+        setPlayer(input: $input) {
           id
           black
           moveText
@@ -35,8 +32,14 @@ module.exports = (
         }
       }
     `,
-    operationName: operationName,
-    item: { input: { gameId: gameId, playerId: playerId } },
+    operationName: "SetPlayer",
+    item: {
+      input: {
+        gameId: gameId,
+        playerId: playerId,
+        playerColor: willPlayWhite ? WHITE : BLACK,
+      },
+    },
   })
     .then((response) => {
       console.log(response);

@@ -45,12 +45,12 @@
         "FunctionName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "pixelchessResolveCreateConnectionMutation",
+            "pixelchessResolveSetPlayerMutation",
             {
               "Fn::Join": [
                 "",
                 [
-                  "pixelchessResolveCreateConnectionMutation",
+                  "pixelchessResolveSetPlayerMutation",
                   "-",
                   {
                     "Ref": "env"
@@ -71,12 +71,12 @@
             "FUNCTION_PIXELCHESSEXECUTEGRAPHQLOPERATION_NAME": {
               "Ref": "functionpixelchessExecuteGraphQLOperationName"
             },
-            "API_PIXELCHESS_CONNECTIONTABLE_NAME": {
+            "API_PIXELCHESS_GAMETABLE_NAME": {
               "Fn::ImportValue": {
-                "Fn::Sub": "${apipixelchessGraphQLAPIIdOutput}:GetAtt:ConnectionTable:Name"
+                "Fn::Sub": "${apipixelchessGraphQLAPIIdOutput}:GetAtt:GameTable:Name"
               }
             },
-            "API_PIXELCHESS_CONNECTIONTABLE_ARN": {
+            "API_PIXELCHESS_GAMETABLE_ARN": {
               "Fn::Join": [
                 "",
                 [
@@ -91,7 +91,7 @@
                   ":table/",
                   {
                     "Fn::ImportValue": {
-                      "Fn::Sub": "${apipixelchessGraphQLAPIIdOutput}:GetAtt:ConnectionTable:Name"
+                      "Fn::Sub": "${apipixelchessGraphQLAPIIdOutput}:GetAtt:GameTable:Name"
                     }
                   }
                 ]
@@ -117,7 +117,7 @@
         "Timeout": "25",
         "Code": {
           "S3Bucket": "amplify-pixelchess-dev-131434-deployment",
-          "S3Key": "amplify-builds/pixelchessResolveCreateConnectionMutation-7051786863356a6b5749-build.zip"
+          "S3Key": "amplify-builds/pixelchessResolveSetPlayerMutation-4333644e735076644a6c-build.zip"
         }
       }
     },
@@ -127,12 +127,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "pixelchessLambdaRolec54bf82d",
+            "pixelchessLambdaRole73b70083",
             {
               "Fn::Join": [
                 "",
                 [
-                  "pixelchessLambdaRolec54bf82d",
+                  "pixelchessLambdaRole73b70083",
                   "-",
                   {
                     "Ref": "env"
@@ -250,9 +250,8 @@
             {
               "Effect": "Allow",
               "Action": [
-                "dynamodb:Put*",
-                "dynamodb:Create*",
-                "dynamodb:BatchWriteItem"
+                "dynamodb:Update*",
+                "dynamodb:RestoreTable*"
               ],
               "Resource": [
                 {
@@ -270,7 +269,7 @@
                       ":table/",
                       {
                         "Fn::ImportValue": {
-                          "Fn::Sub": "${apipixelchessGraphQLAPIIdOutput}:GetAtt:ConnectionTable:Name"
+                          "Fn::Sub": "${apipixelchessGraphQLAPIIdOutput}:GetAtt:GameTable:Name"
                         }
                       }
                     ]
@@ -291,7 +290,7 @@
                       ":table/",
                       {
                         "Fn::ImportValue": {
-                          "Fn::Sub": "${apipixelchessGraphQLAPIIdOutput}:GetAtt:ConnectionTable:Name"
+                          "Fn::Sub": "${apipixelchessGraphQLAPIIdOutput}:GetAtt:GameTable:Name"
                         }
                       },
                       "/index/*"
