@@ -94,14 +94,7 @@ enum Status {
 type Subscription {
   onUpdateGame(id: ID!): Game
     @aws_iam
-    @aws_subscribe(
-      mutations: [
-        "appendMoveText"
-        "setBlackPlayer"
-        "setWhitePlayer"
-        "updateStatus"
-      ]
-    )
+    @aws_subscribe(mutations: ["appendMoveText", "setPlayer", "updateStatus"])
 }
 
 input UpdateStatusInput {

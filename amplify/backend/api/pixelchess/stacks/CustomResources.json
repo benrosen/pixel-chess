@@ -236,6 +236,111 @@
           ]
         }
       }
+    },
+    "ResolveSetPlayerMutationLambdaDataSource": {
+      "Type": "AWS::AppSync::DataSource",
+      "Properties": {
+        "ApiId": {
+          "Ref": "AppSyncApiId"
+        },
+        "Name": "ResolveSetPlayerMutationFunction",
+        "Type": "AWS_LAMBDA",
+        "ServiceRoleArn": {
+          "Fn::GetAtt": ["ResolveSetPlayerMutationLambdaDataSourceRole", "Arn"]
+        },
+        "LambdaConfig": {
+          "LambdaFunctionArn": {
+            "Fn::Sub": [
+              "arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:function:pixelchessResolveSetPlayerMutation-${env}",
+              { "env": { "Ref": "env" } }
+            ]
+          }
+        }
+      }
+    },
+    "ResolveSetPlayerMutationLambdaDataSourceRole": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "RoleName": {
+          "Fn::Sub": [
+            "ResolveSetPlayerMutationLambdaDataSourceRole-${env}",
+            { "env": { "Ref": "env" } }
+          ]
+        },
+        "AssumeRolePolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "appsync.amazonaws.com"
+              },
+              "Action": "sts:AssumeRole"
+            }
+          ]
+        },
+        "Policies": [
+          {
+            "PolicyName": "InvokeLambdaFunction",
+            "PolicyDocument": {
+              "Version": "2012-10-17",
+              "Statement": [
+                {
+                  "Effect": "Allow",
+                  "Action": ["lambda:invokeFunction"],
+                  "Resource": [
+                    {
+                      "Fn::Sub": [
+                        "arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:function:pixelchessResolveSetPlayerMutation-${env}",
+                        { "env": { "Ref": "env" } }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "MutationResolveSetPlayerMutationResolver": {
+      "Type": "AWS::AppSync::Resolver",
+      "Properties": {
+        "ApiId": {
+          "Ref": "AppSyncApiId"
+        },
+        "DataSourceName": {
+          "Fn::GetAtt": ["ResolveSetPlayerMutationLambdaDataSource", "Name"]
+        },
+        "TypeName": "Mutation",
+        "FieldName": "setPlayer",
+        "RequestMappingTemplateS3Location": {
+          "Fn::Sub": [
+            "s3://${S3DeploymentBucket}/${S3DeploymentRootKey}/resolvers/Mutation.setPlayer.req.vtl",
+            {
+              "S3DeploymentBucket": {
+                "Ref": "S3DeploymentBucket"
+              },
+              "S3DeploymentRootKey": {
+                "Ref": "S3DeploymentRootKey"
+              }
+            }
+          ]
+        },
+        "ResponseMappingTemplateS3Location": {
+          "Fn::Sub": [
+            "s3://${S3DeploymentBucket}/${S3DeploymentRootKey}/resolvers/Mutation.setPlayer.res.vtl",
+            {
+              "S3DeploymentBucket": {
+                "Ref": "S3DeploymentBucket"
+              },
+              "S3DeploymentRootKey": {
+                "Ref": "S3DeploymentRootKey"
+              }
+            }
+          ]
+        }
+      }
     }
   },
   "Conditions": {
