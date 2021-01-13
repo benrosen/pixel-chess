@@ -20,7 +20,13 @@ module.exports = (id, lambda, graphQLFunctionName) => {
     `,
     operationName: "GetGame",
     item: { id: id },
-  }).then((response) => {
-    return response.data.getGame;
-  });
+  })
+    .then((response) => {
+      console.log("getGame response:", response);
+      return response.data.getGame;
+    })
+    .catch((error) => {
+      console.log(error);
+      // TODO handle errors
+    });
 };
