@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "function": {
+      "pixelchessExecuteGraphQLOperation": [
+        "read"
+      ]
+    },
+    "storage": {
+      "Connection:@model(appsync)": [
+        "create"
+      ]
+    }
+  },
+  "lambdaLayers": [
+    {
+      "type": "ProjectLayer",
+      "resourceName": "pixelchessLambdaUtils",
+      "version": 1
+    }
+  ]
+}

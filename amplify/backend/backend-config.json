@@ -82,6 +82,34 @@
           ]
         }
       ]
+    },
+    "pixelchessResolveCreateConnectionMutation": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "pixelchessExecuteGraphQLOperation",
+          "attributes": [
+            "Name"
+          ]
+        },
+        {
+          "category": "api",
+          "resourceName": "pixelchess",
+          "attributes": [
+            "GraphQLAPIIdOutput"
+          ]
+        },
+        {
+          "category": "function",
+          "resourceName": "pixelchessLambdaUtils",
+          "attributes": [
+            "Arn"
+          ]
+        }
+      ]
     }
   }
 }
