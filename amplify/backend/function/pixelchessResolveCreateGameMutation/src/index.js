@@ -30,10 +30,9 @@ exports.handler = ({ id, timestamp }) => {
     status: "PENDING",
     createdAt: timestamp,
     updatedAt: timestamp,
+    version: 1,
     __typename: "Game",
   };
   console.log(game);
   return createRecord(documentClient, GAME_TABLE_NAME, game);
 };
-
-// TODO document with @throw tag
