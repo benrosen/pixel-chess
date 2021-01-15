@@ -13,13 +13,8 @@ export default function joinGame(id) {
         createConnection(input: $input) {
           game {
             id
-            black
             moveText
             status
-            white
-            createdAt
-            updatedAt
-            version
           }
         }
       }
@@ -27,13 +22,9 @@ export default function joinGame(id) {
     variables: { input: { gameId: id } },
   })
     .then((response) => {
-      console.log(response);
-      // TODO return the connected game
+      return response.data.createConnection.game;
     })
     .catch((error) => {
       console.log(error);
-      // TODO raise error
     });
 }
-
-// TODO implement and document errors that may be thrown
