@@ -19,10 +19,6 @@ export default async function createGame() {
       return response.data.createGame;
     })
     .catch((error) => {
-      // TODO handle the various errors that may be thrown
       console.log(error);
     });
 }
-
-// TODO configure and document errors that may be thrown
-// TODO configure typedef for game
