@@ -74,41 +74,9 @@ exports.handler = async ({ arguments, timestamp }) => {
   })
     .then((response) => {
       console.log(response);
-      // TODO return response
+      return response.Attributes;
     })
     .catch((error) => {
       console.log(error);
-      // TODO handle errors
     });
-
-  // TODO try to set the provided player to the provided value on the provided game
-  // TODO get game players
-  // TODO if both players are defined, game is full
-  // TODO
 };
-// exports.handler = async ({ arguments }) => {
-//   const { gameId, playerId } = arguments.input;
-//   const { black } = await invokeLambda(lambda, GET_PLAYERS_FUNCTION, {
-//     id: gameId,
-//   });
-//   if (black) {
-//     throw new Error("Someone else is already playing as black.");
-//   }
-//   return updateRecord(documentClient, {
-//     ExpressionAttributeValues: { ":playerId": playerId },
-//     Key: { id: gameId },
-//     ReturnValues: "ALL_NEW",
-//     TableName: GAME_TABLE_NAME,
-//     UpdateExpression: "set black = :playerId",
-//   })
-//     .then((response) => {
-//       console.log(response);
-//       // TODO return response
-//     })
-//     .catch((error) => {
-//       console.log(error);
-//       // TODO handle errors
-//     });
-// };
-
-// TODO document with @throw tag
