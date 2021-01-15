@@ -10,7 +10,6 @@ const getResponse = require("./getResponse");
 const { getEnvData } = require("aws-lambda-utility-layer");
 const urlParse = require("url").URL;
 
-// TODO update getEnvData to accept multiple keys and return multiple values
 const APPSYNC_URL = getEnvData(
   process.env,
   "API_PIXELCHESS_GRAPHQLAPIENDPOINTOUTPUT"
@@ -38,6 +37,3 @@ exports.handler = async ({ item, operation, operationName }) => {
 
   return getResponse(ENDPOINT, request);
 };
-
-// TODO create a custom input typedef for executeGraphQLOperation a.k.a exports.handler
-// TODO figure out what ./event.json is for. test event? schema?

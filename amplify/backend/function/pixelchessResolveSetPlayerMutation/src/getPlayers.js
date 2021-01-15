@@ -1,7 +1,5 @@
 const { invokeLambda } = require("aws-lambda-utility-layer");
 
-// TODO extract this function into the /opt/ folder of the lambdaUtils layer
-
 /**
  * Get the players for a given game id.
  *
@@ -27,6 +25,5 @@ module.exports = (id, lambda, graphQLFunctionName) => {
     })
     .catch((error) => {
       console.log(error);
-      // TODO handle errors
     });
 };

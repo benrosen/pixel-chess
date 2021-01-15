@@ -3,9 +3,6 @@ input AppendMoveTextInput {
   moveText: String!
 }
 
-# TODO configure createConnection resolver
-# TODO configure deleteConnection resolver
-# TODO update Game when connection is created/deleted
 type Connection
   @aws_iam
   @auth(
@@ -49,8 +46,6 @@ type Game
   white: String
 }
 
-# TODO configure createMove resolver
-# TODO update Game when move is created
 type Move
   @aws_iam
   @auth(rules: [{ allow: public, provider: iam, operations: [create] }])
@@ -60,8 +55,6 @@ type Move
   moveText: String!
 }
 
-# TODO create resolvers for all of these mutations
-# TODO try to use @aws_iam on the type instead of all the fields
 type Mutation {
   appendMoveText(input: AppendMoveTextInput!): Game @aws_iam
   createConnection(input: CreateConnectionInput!): Connection @aws_iam
