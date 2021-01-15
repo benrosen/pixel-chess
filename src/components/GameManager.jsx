@@ -24,7 +24,6 @@ export default function GameManager({ children }) {
           gameSubscription = createGameSubscription(newGame, setGame);
         })
         .catch((error) => {
-          // TODO handle the various errors that may be thrown
           console.log(error);
         });
     } else {
@@ -33,7 +32,6 @@ export default function GameManager({ children }) {
           history.push(game.id);
         })
         .catch((error) => {
-          // TODO handle the various errors that may be thrown
           console.log(error);
         });
     }
@@ -43,6 +41,3 @@ export default function GameManager({ children }) {
 
   return <GameProvider value={game}>{children}</GameProvider>;
 }
-
-// TODO document GameManager
-// TODO add PropTypes to GameManager
