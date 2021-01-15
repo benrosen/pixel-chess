@@ -24,11 +24,15 @@ module.exports = (
     operation: /* GraphQL */ `
       mutation SetPlayer($input: SetPlayerInput!) {
         setPlayer(input: $input) {
-          id
           black
+          createdAt
+          id
           moveText
           status
+          updatedAt
+          version
           white
+          __typename
         }
       }
     `,
@@ -43,12 +47,9 @@ module.exports = (
   })
     .then((response) => {
       console.log(response);
-      // TODO return data from response
+      return response.data.setPlayer;
     })
     .catch((error) => {
       console.log(error);
-      // TODO handle errors
     });
 };
-
-// TODO create typedefs for graphql types
