@@ -8,7 +8,7 @@
 Amplify Params - DO NOT EDIT */
 
 const AWS = require("aws-sdk");
-// TODO refactor getPlayers out in favor of invokeLambda(pixelchessGetPlayers)
+
 const getPlayers = require("./getPlayers");
 const setPlayer = require("./setPlayer");
 
@@ -48,7 +48,7 @@ exports.handler = async (event) => {
   );
 
   if (black && white) {
-    // TODO throw game already full error
+    throw new Error("Both players are already connected.");
   } else {
     const connection = {
       id: id,
@@ -61,7 +61,6 @@ exports.handler = async (event) => {
 
     console.log(connection);
 
-    // TODO create connection record in the database
     await createRecord(documentClient, CONNECTION_TABLE_NAME, connection).then(
       (response) => {
         console.log(response);
@@ -75,8 +74,6 @@ exports.handler = async (event) => {
       willPlayWhite = true;
     }
 
-    console.log("will play white", willPlayWhite);
-
     const connectedGame = await setPlayer(
       gameId,
       EXECUTE_GRAPHQL_OPERATION,
@@ -85,10 +82,6 @@ exports.handler = async (event) => {
       willPlayWhite
     );
 
-    console.log("connected game", connectedGame);
-
-    // TODO return newly created connection object
+    return { ...connection, game: connectedGame };
   }
 };
-
-// TODO document with @throw tag
