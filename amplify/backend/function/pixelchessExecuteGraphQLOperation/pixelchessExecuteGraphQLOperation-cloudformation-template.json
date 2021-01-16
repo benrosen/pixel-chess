@@ -91,7 +91,7 @@
         "Timeout": "25",
         "Code": {
           "S3Bucket": "amplify-pixelchess-dev-131434-deployment",
-          "S3Key": "amplify-builds/pixelchessExecuteGraphQLOperation-744165363256342f5841-build.zip"
+          "S3Key": "amplify-builds/pixelchessExecuteGraphQLOperation-43764c3355713675424c-build.zip"
         }
       }
     },
