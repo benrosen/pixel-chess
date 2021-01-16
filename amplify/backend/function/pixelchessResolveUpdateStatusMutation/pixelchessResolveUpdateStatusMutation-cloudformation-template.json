@@ -41,12 +41,12 @@
         "FunctionName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "pixelchessResolveCreateGameMutation",
+            "pixelchessResolveUpdateStatusMutation",
             {
               "Fn::Join": [
                 "",
                 [
-                  "pixelchessResolveCreateGameMutation",
+                  "pixelchessResolveUpdateStatusMutation",
                   "-",
                   {
                     "Ref": "env"
@@ -110,7 +110,7 @@
         "Timeout": "25",
         "Code": {
           "S3Bucket": "amplify-pixelchess-dev-131434-deployment",
-          "S3Key": "amplify-builds/pixelchessResolveCreateGameMutation-436e304f534441564b33-build.zip"
+          "S3Key": "amplify-builds/pixelchessResolveUpdateStatusMutation-3275334e615330617372-build.zip"
         }
       }
     },
@@ -120,12 +120,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "pixelchessLambdaRole306e3ee7",
+            "pixelchessLambdaRole459e1eeb",
             {
               "Fn::Join": [
                 "",
                 [
-                  "pixelchessLambdaRole306e3ee7",
+                  "pixelchessLambdaRole459e1eeb",
                   "-",
                   {
                     "Ref": "env"
@@ -214,9 +214,8 @@
             {
               "Effect": "Allow",
               "Action": [
-                "dynamodb:Put*",
-                "dynamodb:Create*",
-                "dynamodb:BatchWriteItem"
+                "dynamodb:Update*",
+                "dynamodb:RestoreTable*"
               ],
               "Resource": [
                 {
