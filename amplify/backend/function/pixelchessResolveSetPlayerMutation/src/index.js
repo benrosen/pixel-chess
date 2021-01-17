@@ -11,7 +11,9 @@ const AWS = require("aws-sdk");
 
 const { getEnvData, updateRecord } = require("aws-lambda-utility-layer");
 
+const getExpectedStatus = require("./getExpectedStatus");
 const getPlayers = require("./getPlayers");
+const updateStatus = require("./updateStatus");
 
 const EXECUTE_GRAPHQL_OPERATION = getEnvData(
   process.env,
@@ -62,7 +64,7 @@ exports.handler = async ({ arguments, timestamp }) => {
     );
   }
 
-  return updateRecord(documentClient, {
+  const updatedRecord = await updateRecord(documentClient, {
     ExpressionAttributeValues: {
       ":playerId": playerId,
       ":updatedAt": timestamp,
@@ -73,10 +75,36 @@ exports.handler = async ({ arguments, timestamp }) => {
     UpdateExpression: `set ${playerColor.toLowerCase()} = :playerId, updatedAt = :updatedAt`,
   })
     .then((response) => {
-      console.log(response);
       return response.Attributes;
     })
     .catch((error) => {
       console.log(error);
     });
+
+  console.log("updatedRecord:", updatedRecord);
+
+  const expectedStatus = getExpectedStatus(updatedRecord);
+
+  console.log(expectedStatus);
+
+  if (updatedRecord.status !== expectedStatus) {
+    console.log(`updating ${updatedRecord.status} to ${expectedStatus}`);
+    return await updateStatus(
+      updatedRecord.id,
+      expectedStatus,
+      lambda,
+      EXECUTE_GRAPHQL_OPERATION
+    )
+      .then((response) => {
+        console.log("updateStatus response", response);
+        // TODO return response?
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
+  console.log("returning:", updatedRecord);
+
+  return updatedRecord;
 };
