@@ -42,6 +42,5 @@ exports.handler = async ({ arguments }) => {
     })
     .catch((error) => {
       console.log(error);
-      //   TODO handle error
     });
 };

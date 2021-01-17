@@ -24,7 +24,6 @@ export default function createGameSubscription(game, setGame) {
       setGame(update.value.data.onUpdateGame);
     },
     error: (error) => {
-      // TODO handle error
       console.log(error);
     },
   });
