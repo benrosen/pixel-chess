@@ -15,15 +15,10 @@ const getExpectedStatus = require("./getExpectedStatus");
 const getPlayers = require("./getPlayers");
 const updateStatus = require("./updateStatus");
 
-const EXECUTE_GRAPHQL_OPERATION = getEnvData(
-  process.env,
-  "FUNCTION_PIXELCHESSEXECUTEGRAPHQLOPERATION_NAME"
-);
-
-const GAME_TABLE_NAME = getEnvData(
-  process.env,
-  "API_PIXELCHESS_GAMETABLE_NAME"
-);
+const [EXECUTE_GRAPHQL_OPERATION, GAME_TABLE_NAME] = getEnvData(process.env, [
+  "FUNCTION_PIXELCHESSEXECUTEGRAPHQLOPERATION_NAME",
+  "API_PIXELCHESS_GAMETABLE_NAME",
+]);
 
 const BLACK = "BLACK";
 const WHITE = "WHITE";
