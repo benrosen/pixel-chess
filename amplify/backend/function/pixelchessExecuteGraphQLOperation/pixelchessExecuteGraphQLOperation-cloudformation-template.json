@@ -85,13 +85,13 @@
         "Runtime": "nodejs12.x",
         "Layers": [
           {
-            "Fn::Sub": "arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:layer:pixelchessLambdaUtils-dev:1"
+            "Fn::Sub": "arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:layer:pixelchessLambdaUtils-dev:2"
           }
         ],
         "Timeout": "25",
         "Code": {
           "S3Bucket": "amplify-pixelchess-dev-131434-deployment",
-          "S3Key": "amplify-builds/pixelchessExecuteGraphQLOperation-43764c3355713675424c-build.zip"
+          "S3Key": "amplify-builds/pixelchessExecuteGraphQLOperation-68445344754436436251-build.zip"
         }
       }
     },

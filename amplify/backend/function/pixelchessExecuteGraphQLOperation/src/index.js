@@ -10,12 +10,10 @@ const getResponse = require("./getResponse");
 const { getEnvData } = require("aws-lambda-utility-layer");
 const urlParse = require("url").URL;
 
-const APPSYNC_URL = getEnvData(
-  process.env,
-  "API_PIXELCHESS_GRAPHQLAPIENDPOINTOUTPUT"
-);
-
-const REGION = getEnvData(process.env, "REGION");
+const [APPSYNC_URL, REGION] = getEnvData(process.env, [
+  "API_PIXELCHESS_GRAPHQLAPIENDPOINTOUTPUT",
+  "REGION",
+]);
 
 const ENDPOINT = new urlParse(APPSYNC_URL).hostname.toString();
 
