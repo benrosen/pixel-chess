@@ -14,15 +14,13 @@ const setPlayer = require("./setPlayer");
 
 const { createRecord, getEnvData } = require("aws-lambda-utility-layer");
 
-const EXECUTE_GRAPHQL_OPERATION = getEnvData(
-  process.env,
-  "FUNCTION_PIXELCHESSEXECUTEGRAPHQLOPERATION_NAME"
-);
-
-const CONNECTION_TABLE_NAME = getEnvData(
-  process.env,
-  "API_PIXELCHESS_CONNECTIONTABLE_NAME"
-);
+const [
+  CONNECTION_TABLE_NAME,
+  EXECUTE_GRAPHQL_OPERATION,
+] = getEnvData(process.env, [
+  "API_PIXELCHESS_CONNECTIONTABLE_NAME",
+  "FUNCTION_PIXELCHESSEXECUTEGRAPHQLOPERATION_NAME",
+]);
 
 const documentClient = new AWS.DynamoDB.DocumentClient();
 const lambda = new AWS.Lambda();
