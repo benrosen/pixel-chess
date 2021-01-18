@@ -45,6 +45,20 @@
                 }
               ],
               "hash": "P9m9YLaLM+qQLPNGhPR6wIxu8yYTfP1cv7CLqLrVMpI="
+            },
+            "2": {
+              "permissions": [
+                {
+                  "type": "awsAccounts",
+                  "accounts": [
+                    "326238338403"
+                  ]
+                },
+                {
+                  "type": "private"
+                }
+              ],
+              "hash": "c89mG9rC7Cb8pNikwVzTyO91gkvfCkaNtiDOlMQ7H/c="
             }
           }
         }
