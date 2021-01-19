@@ -73,6 +73,48 @@
                 }
               ],
               "hash": "ssih8oymdhMNnl28caaAXQs0aaIvYI/g8yQ/XhddPgk="
+            },
+            "4": {
+              "permissions": [
+                {
+                  "type": "awsAccounts",
+                  "accounts": [
+                    "326238338403"
+                  ]
+                },
+                {
+                  "type": "private"
+                }
+              ],
+              "hash": "c89mG9rC7Cb8pNikwVzTyO91gkvfCkaNtiDOlMQ7H/c="
+            },
+            "5": {
+              "permissions": [
+                {
+                  "type": "awsAccounts",
+                  "accounts": [
+                    "326238338403"
+                  ]
+                },
+                {
+                  "type": "private"
+                }
+              ],
+              "hash": "FHGHx4pnLTe95dkgznOd7pVefNDM9I6r/WIG9xVY7xg="
+            },
+            "6": {
+              "permissions": [
+                {
+                  "type": "awsAccounts",
+                  "accounts": [
+                    "326238338403"
+                  ]
+                },
+                {
+                  "type": "private"
+                }
+              ],
+              "hash": "c89mG9rC7Cb8pNikwVzTyO91gkvfCkaNtiDOlMQ7H/c="
             }
           }
         }
