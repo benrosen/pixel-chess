@@ -9,6 +9,7 @@ Amplify Params - DO NOT EDIT */
 
 const AWS = require("aws-sdk");
 
+// TODO refactor to invoke QueryPlayersByGameId lambda
 const getPlayers = require("./getPlayers");
 const setPlayer = require("./setPlayer");
 

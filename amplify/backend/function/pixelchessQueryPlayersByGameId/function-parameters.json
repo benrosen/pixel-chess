@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "function": {
+      "pixelchessExecuteGraphQLOperation": [
+        "read"
+      ]
+    }
+  },
+  "lambdaLayers": [
+    {
+      "type": "ProjectLayer",
+      "resourceName": "pixelchessLambdaUtils",
+      "version": 6
+    }
+  ]
+}
