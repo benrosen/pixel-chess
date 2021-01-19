@@ -159,6 +159,27 @@
           ]
         }
       ]
+    },
+    "pixelchessQueryPlayersByGameId": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "pixelchessExecuteGraphQLOperation",
+          "attributes": [
+            "Name"
+          ]
+        },
+        {
+          "category": "function",
+          "resourceName": "pixelchessLambdaUtils",
+          "attributes": [
+            "Arn"
+          ]
+        }
+      ]
     }
   }
 }
