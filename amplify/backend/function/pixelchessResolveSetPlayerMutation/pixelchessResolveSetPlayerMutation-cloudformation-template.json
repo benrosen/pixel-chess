@@ -21,6 +21,10 @@
     "functionpixelchessLambdaUtilsArn": {
       "Type": "String",
       "Default": "functionpixelchessLambdaUtilsArn"
+    },
+    "functionpixelchessQueryPlayersByGameIdName": {
+      "Type": "String",
+      "Default": "functionpixelchessQueryPlayersByGameIdName"
     }
   },
   "Conditions": {
@@ -99,6 +103,9 @@
             },
             "API_PIXELCHESS_GRAPHQLAPIIDOUTPUT": {
               "Ref": "apipixelchessGraphQLAPIIdOutput"
+            },
+            "FUNCTION_PIXELCHESSQUERYPLAYERSBYGAMEID_NAME": {
+              "Ref": "functionpixelchessQueryPlayersByGameIdName"
             }
           }
         },
@@ -111,13 +118,13 @@
         "Runtime": "nodejs12.x",
         "Layers": [
           {
-            "Fn::Sub": "arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:layer:pixelchessLambdaUtils-dev:2"
+            "Fn::Sub": "arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:layer:pixelchessLambdaUtils-dev:6"
           }
         ],
         "Timeout": "25",
         "Code": {
           "S3Bucket": "amplify-pixelchess-dev-131434-deployment",
-          "S3Key": "amplify-builds/pixelchessResolveSetPlayerMutation-41444a776a4b754f6d67-build.zip"
+          "S3Key": "amplify-builds/pixelchessResolveSetPlayerMutation-5a30397a545730657266-build.zip"
         }
       }
     },
@@ -241,6 +248,35 @@
                       ":function:",
                       {
                         "Ref": "functionpixelchessExecuteGraphQLOperationName"
+                      }
+                    ]
+                  ]
+                }
+              ]
+            },
+            {
+              "Effect": "Allow",
+              "Action": [
+                "lambda:Get*",
+                "lambda:List*",
+                "lambda:Invoke*"
+              ],
+              "Resource": [
+                {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:aws:lambda:",
+                      {
+                        "Ref": "AWS::Region"
+                      },
+                      ":",
+                      {
+                        "Ref": "AWS::AccountId"
+                      },
+                      ":function:",
+                      {
+                        "Ref": "functionpixelchessQueryPlayersByGameIdName"
                       }
                     ]
                   ]

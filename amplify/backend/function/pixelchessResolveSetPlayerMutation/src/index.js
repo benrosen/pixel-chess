@@ -4,20 +4,29 @@
 	API_PIXELCHESS_GRAPHQLAPIIDOUTPUT
 	ENV
 	FUNCTION_PIXELCHESSEXECUTEGRAPHQLOPERATION_NAME
+	FUNCTION_PIXELCHESSQUERYPLAYERSBYGAMEID_NAME
 	REGION
 Amplify Params - DO NOT EDIT */
 
 const AWS = require("aws-sdk");
 
-const { getEnvData, updateRecord } = require("aws-lambda-utility-layer");
+const {
+  getEnvData,
+  invokeLambda,
+  updateRecord,
+} = require("aws-lambda-utility-layer");
 
 const getExpectedStatus = require("./getExpectedStatus");
-const getPlayers = require("./getPlayers");
 const updateStatus = require("./updateStatus");
 
-const [EXECUTE_GRAPHQL_OPERATION, GAME_TABLE_NAME] = getEnvData(process.env, [
+const [
+  EXECUTE_GRAPHQL_OPERATION,
+  GAME_TABLE_NAME,
+  QUERY_PLAYERS,
+] = getEnvData(process.env, [
   "FUNCTION_PIXELCHESSEXECUTEGRAPHQLOPERATION_NAME",
   "API_PIXELCHESS_GAMETABLE_NAME",
+  "FUNCTION_PIXELCHESSQUERYPLAYERSBYGAMEID_NAME",
 ]);
 
 const BLACK = "BLACK";
@@ -35,11 +44,9 @@ const lambda = new AWS.Lambda();
 exports.handler = async ({ arguments, timestamp }) => {
   const { gameId, playerColor, playerId } = arguments.input;
 
-  const { black, white } = await getPlayers(
-    gameId,
-    lambda,
-    EXECUTE_GRAPHQL_OPERATION
-  );
+  const { black, white } = await invokeLambda(lambda, QUERY_PLAYERS, {
+    id: gameId,
+  });
 
   if (black && white) {
     throw new Error("Both players are already defined.");

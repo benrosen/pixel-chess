@@ -124,6 +124,13 @@
           ]
         },
         {
+          "category": "function",
+          "resourceName": "pixelchessQueryPlayersByGameId",
+          "attributes": [
+            "Name"
+          ]
+        },
+        {
           "category": "api",
           "resourceName": "pixelchess",
           "attributes": [
