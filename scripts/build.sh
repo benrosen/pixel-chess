@@ -3,7 +3,7 @@ set -e
 
 echo "Building local resources..."
 react-scripts build
-sh ./compile_schema.sh
+npm run compile_schema
 
 echo "Building remote resources..."
 amplify push
