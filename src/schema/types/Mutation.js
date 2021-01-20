@@ -1,3 +1,13 @@
+/**
+ * @typedef Mutation
+ * @property {AppendMoveTextMutation} appendMoveText
+ * @property {CreateConnectionMutation} createConnection
+ * @property {CreateGameMutation} createGame
+ * @property {CreateMoveMutation} createMove
+ * @property {DeleteConnectionMutation} deleteConnection
+ * @property {SetPlayerMutation} setPlayer
+ * @property {UpdateStatusMutation} updateStatus
+ */
 export default /* GraphQL */ `
   type Mutation {
     appendMoveText(input: AppendMoveTextInput!): Game @aws_iam

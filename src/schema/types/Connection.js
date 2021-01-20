@@ -1,3 +1,11 @@
+/**
+ * A connection to a game.
+ *
+ * @typedef Connection
+ * @property {string} id The id of the connection.
+ * @property {string} gameId The id of the game associated with this connection.
+ * @property {Game} game The game associated with this connection.
+ */
 export default /* GraphQL */ `
   type Connection
     @aws_iam
@@ -13,3 +21,5 @@ export default /* GraphQL */ `
     game: Game @connection(fields: ["gameId"]) @aws_iam
   }
 `;
+
+// TODO custom jsdoc tags for appsync directives like @aws_iam and @auth and @model

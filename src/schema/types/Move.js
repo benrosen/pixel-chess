@@ -1,3 +1,11 @@
+/**
+ * A chess move represented in standard algebraic notation.
+ *
+ * @typedef Move
+ * @property {string} id The id of the move.
+ * @property {string} gameId The id of the game associated with this move.
+ * @property {string} moveText The move represented in standard algebraic notation.
+ */
 export default /* GraphQL */ `
   type Move
     @aws_iam

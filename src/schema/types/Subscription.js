@@ -1,3 +1,7 @@
+/**
+ * @typedef Subscription
+ * @property {OnUpdateGameSubscription} onUpdateGame
+ */
 export default /* GraphQL */ `
   type Subscription {
     onUpdateGame(id: ID!): Game
