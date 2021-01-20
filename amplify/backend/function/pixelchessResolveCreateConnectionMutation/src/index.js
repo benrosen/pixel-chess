@@ -4,23 +4,28 @@
 	API_PIXELCHESS_GRAPHQLAPIIDOUTPUT
 	ENV
 	FUNCTION_PIXELCHESSEXECUTEGRAPHQLOPERATION_NAME
+	FUNCTION_PIXELCHESSQUERYPLAYERSBYGAMEID_NAME
 	REGION
 Amplify Params - DO NOT EDIT */
 
 const AWS = require("aws-sdk");
 
-// TODO refactor to invoke QueryPlayersByGameId lambda
-const getPlayers = require("./getPlayers");
 const setPlayer = require("./setPlayer");
 
-const { createRecord, getEnvData } = require("aws-lambda-utility-layer");
+const {
+  createRecord,
+  getEnvData,
+  invokeLambda,
+} = require("aws-lambda-utility-layer");
 
 const [
   CONNECTION_TABLE_NAME,
   EXECUTE_GRAPHQL_OPERATION,
+  QUERY_PLAYERS,
 ] = getEnvData(process.env, [
   "API_PIXELCHESS_CONNECTIONTABLE_NAME",
   "FUNCTION_PIXELCHESSEXECUTEGRAPHQLOPERATION_NAME",
+  "FUNCTION_PIXELCHESSQUERYPLAYERSBYGAMEID_NAME",
 ]);
 
 const documentClient = new AWS.DynamoDB.DocumentClient();
@@ -40,11 +45,9 @@ exports.handler = async (event) => {
 
   console.log(arguments, gameId, owner, timestamp);
 
-  const { black, white } = await getPlayers(
-    gameId,
-    lambda,
-    EXECUTE_GRAPHQL_OPERATION
-  );
+  const { black, white } = await invokeLambda(lambda, QUERY_PLAYERS, {
+    id: gameId,
+  });
 
   if (black && white) {
     throw new Error("Both players are already connected.");
@@ -58,13 +61,7 @@ exports.handler = async (event) => {
       __typename: "Game",
     };
 
-    console.log(connection);
-
-    await createRecord(documentClient, CONNECTION_TABLE_NAME, connection).then(
-      (response) => {
-        console.log(response);
-      }
-    );
+    await createRecord(documentClient, CONNECTION_TABLE_NAME, connection);
 
     let willPlayWhite;
     if (!(black || white)) {
