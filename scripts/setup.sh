@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
 
-git pull -u origin HEAD
+git pull
 npm run deploy
 npm start
