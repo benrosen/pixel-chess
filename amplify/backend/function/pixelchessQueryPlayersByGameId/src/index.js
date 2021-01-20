@@ -8,7 +8,7 @@ const AWS = require("aws-sdk");
 
 const { getEnvData, invokeLambda } = require("aws-lambda-utility-layer");
 
-const [EXECUTE_GRAPHQL_OPERATION] = getEnvData(process.env, [
+const EXECUTE_GRAPHQL_OPERATION = getEnvData(process.env, [
   "FUNCTION_PIXELCHESSEXECUTEGRAPHQLOPERATION_NAME",
 ]);
 
@@ -21,8 +21,7 @@ const lambda = new AWS.Lambda();
  * @returns {*} An object containing player ids.
  */
 exports.handler = async ({ id }) => {
-  console.log(id, EXECUTE_GRAPHQL_OPERATION);
-  invokeLambda(lambda, EXECUTE_GRAPHQL_OPERATION, {
+  return invokeLambda(lambda, EXECUTE_GRAPHQL_OPERATION, {
     operation: /* GraphQL */ `
       query GetGame($id: ID!) {
         getGame(id: $id) {
@@ -33,7 +32,12 @@ exports.handler = async ({ id }) => {
     `,
     operationName: "GetGame",
     item: { id: id },
-  }).then((response) => {
-    return response.data.getGame;
-  });
+  })
+    .then((response) => {
+      return response.data.getGame;
+    })
+    .catch((error) => {
+      // TODO handle error
+      console.log(error);
+    });
 };

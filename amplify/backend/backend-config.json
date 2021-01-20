@@ -96,17 +96,17 @@
           ]
         },
         {
+          "category": "function",
+          "resourceName": "pixelchessQueryPlayersByGameId",
+          "attributes": [
+            "Name"
+          ]
+        },
+        {
           "category": "api",
           "resourceName": "pixelchess",
           "attributes": [
             "GraphQLAPIIdOutput"
-          ]
-        },
-        {
-          "category": "function",
-          "resourceName": "pixelchessLambdaUtils",
-          "attributes": [
-            "Arn"
           ]
         }
       ]
