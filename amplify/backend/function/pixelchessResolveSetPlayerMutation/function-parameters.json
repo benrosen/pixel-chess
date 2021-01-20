@@ -3,6 +3,9 @@
     "function": {
       "pixelchessExecuteGraphQLOperation": [
         "read"
+      ],
+      "pixelchessQueryPlayersByGameId": [
+        "read"
       ]
     },
     "storage": {
@@ -15,7 +18,7 @@
     {
       "type": "ProjectLayer",
       "resourceName": "pixelchessLambdaUtils",
-      "version": 2
+      "version": 6
     }
   ]
 }
