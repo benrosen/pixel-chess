@@ -20,10 +20,14 @@
     "web-vitals": "^0.2.4"
   },
   "scripts": {
-    "start": "sh ./scripts/start.sh",
     "build": "sh ./scripts/build.sh",
-    "test": "sh ./scripts/test.sh",
-    "eject": "sh ./scripts/eject.sh"
+    "compile_schema": "sh ./scripts/compile_schema.sh",
+    "deploy": "sh ./scripts/deploy.sh",
+    "document": "sh ./scripts/document.sh",
+    "eject": "sh ./scripts/eject.sh",
+    "setup": "sh ./scripts/setup.sh",
+    "start": "sh ./scripts/start.sh",
+    "test": "sh ./scripts/test.sh"
   },
   "eslintConfig": {
     "extends": [
