@@ -1,1 +1,1 @@
-react-scripts build
+react-scripts test
