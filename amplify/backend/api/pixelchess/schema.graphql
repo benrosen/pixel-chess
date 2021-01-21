@@ -1,96 +1,101 @@
-input AppendMoveTextInput {
-  gameId: ID!
-  moveText: String!
-}
 
-type Connection
-  @aws_iam
-  @auth(
-    rules: [
-      { allow: public, provider: iam, operations: [create] }
-      { allow: owner, operations: [delete] }
-    ]
-  )
-  @model(mutations: null, subscriptions: null) {
-  id: ID!
-  gameId: ID!
-  game: Game @connection(fields: ["gameId"]) @aws_iam
-}
+        # This is an auto generated file.
+        # Do not edit.
+        # Changes to this file may be overwritten.
+      
+  enum GameStatus {
+    PENDING
+    UNDERWAY
+    DRAW
+    BLACK_WON
+    WHITE_WON
+  }
 
-input CreateConnectionInput {
-  gameId: ID!
-}
+  enum PlayerColor {
+    BLACK
+    WHITE
+  }
 
-input CreateMoveInput {
-  gameId: ID!
-}
+  input AppendMoveTextInput {
+    gameId: ID!
+    moveText: String!
+  }
 
-input DeleteConnectionInput {
-  id: ID!
-}
+  input CreateConnectionInput {
+    gameId: ID!
+  }
 
-type Game
-  @aws_iam
-  @auth(
-    rules: [
-      { allow: private, provider: iam, operations: [update] }
-      { allow: public, provider: iam, operations: [create] }
-    ]
-  )
-  @model(mutations: null, subscriptions: null)
-  @versioned {
-  id: ID!
-  black: String
-  moveText: String
-  status: Status!
-  white: String
-}
+  input CreateMoveInput {
+    gameId: ID!
+  }
 
-type Move
-  @aws_iam
-  @auth(rules: [{ allow: public, provider: iam, operations: [create] }])
-  @model(mutations: null, subscriptions: null) {
-  id: ID!
-  gameId: ID!
-  moveText: String!
-}
+  input DeleteConnectionInput {
+    id: ID!
+  }
 
-type Mutation {
-  appendMoveText(input: AppendMoveTextInput!): Game @aws_iam
-  createConnection(input: CreateConnectionInput!): Connection @aws_iam
-  createGame: Game @aws_iam
-  createMove(input: CreateMoveInput!): Move @aws_iam
-  deleteConnection(input: DeleteConnectionInput!): Connection @aws_iam
-  setPlayer(input: SetPlayerInput!): Game @aws_iam
-  updateStatus(input: UpdateStatusInput!): Game @aws_iam
-}
+  input SetPlayerInput {
+    gameId: ID!
+    playerId: ID!
+    playerColor: PlayerColor!
+  }
 
-enum PlayerColor {
-  BLACK
-  WHITE
-}
+  input UpdateStatusInput {
+    gameId: ID!
+    status: GameStatus!
+  }
 
-input SetPlayerInput {
-  gameId: ID!
-  playerId: ID!
-  playerColor: PlayerColor!
-}
-
-enum Status {
-  PENDING
-  UNDERWAY
-  DRAW
-  BLACK_WON
-  WHITE_WON
-}
-
-type Subscription {
-  onUpdateGame(id: ID!): Game
+  type Connection
     @aws_iam
-    @aws_subscribe(mutations: ["appendMoveText", "setPlayer", "updateStatus"])
-}
+    @auth(
+      rules: [
+        { allow: public, provider: iam, operations: [create] }
+        { allow: owner, operations: [delete] }
+      ]
+    )
+    @model(mutations: null, subscriptions: null) {
+    id: ID!
+    gameId: ID!
+    game: Game @connection(fields: ["gameId"]) @aws_iam
+  }
 
-input UpdateStatusInput {
-  gameId: ID!
-  status: Status!
-}
+  type Game
+    @aws_iam
+    @auth(
+      rules: [
+        { allow: private, provider: iam, operations: [update] }
+        { allow: public, provider: iam, operations: [create] }
+      ]
+    )
+    @model(mutations: null, subscriptions: null)
+    @versioned {
+    id: ID!
+    black: String
+    moveText: String
+    status: GameStatus!
+    white: String
+  }
+
+  type Move
+    @aws_iam
+    @auth(rules: [{ allow: public, provider: iam, operations: [create] }])
+    @model(mutations: null, subscriptions: null) {
+    id: ID!
+    gameId: ID!
+    moveText: String!
+  }
+
+  type Mutation {
+    appendMoveText(input: AppendMoveTextInput!): Game @aws_iam
+    createConnection(input: CreateConnectionInput!): Connection @aws_iam
+    createGame: Game @aws_iam
+    createMove(input: CreateMoveInput!): Move @aws_iam
+    deleteConnection(input: DeleteConnectionInput!): Connection @aws_iam
+    setPlayer(input: SetPlayerInput!): Game @aws_iam
+    updateStatus(input: UpdateStatusInput!): Game @aws_iam
+  }
+
+  type Subscription {
+    onUpdateGame(id: ID!): Game
+      @aws_iam
+      @aws_subscribe(mutations: ["appendMoveText", "setPlayer", "updateStatus"])
+  }

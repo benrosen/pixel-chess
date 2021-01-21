@@ -21,7 +21,7 @@
   },
   "scripts": {
     "build": "sh ./scripts/build.sh",
-    "compile_schema": "sh ./scripts/compile_schema.sh",
+    "compile-schema": "node ./scripts/compileSchema.js",
     "deploy": "sh ./scripts/deploy.sh",
     "document": "sh ./scripts/document.sh",
     "eject": "sh ./scripts/eject.sh",
@@ -46,5 +46,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "glob": "^7.1.6"
   }
 }
