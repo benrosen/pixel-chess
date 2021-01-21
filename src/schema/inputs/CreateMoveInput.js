@@ -1,4 +1,4 @@
-export default /* GraphQL */ `
+module.exports = /* GraphQL */ `
   input CreateMoveInput {
     gameId: ID!
   }

@@ -2,7 +2,7 @@
  * @typedef Subscription
  * @property {OnUpdateGameSubscription} onUpdateGame
  */
-export default /* GraphQL */ `
+module.exports = /* GraphQL */ `
   type Subscription {
     onUpdateGame(id: ID!): Game
       @aws_iam

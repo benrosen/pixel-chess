@@ -6,7 +6,7 @@
  * @property {string} gameId The id of the game associated with this connection.
  * @property {Game} game The game associated with this connection.
  */
-export default /* GraphQL */ `
+module.exports = /* GraphQL */ `
   type Connection
     @aws_iam
     @auth(

@@ -6,7 +6,7 @@
  * @property {string} playerId The id of the player you want to set.
  * @property {PlayerColor} playerColor The color to set the player to.
  */
-export default /* GraphQL */ `
+module.exports = /* GraphQL */ `
   input SetPlayerInput {
     gameId: ID!
     playerId: ID!

@@ -12,7 +12,7 @@ const GameStatus = {
   WHITE_WON: 4,
 };
 
-export default /* GraphQL */ `
+module.exports = /* GraphQL */ `
   enum GameStatus {
     PENDING
     UNDERWAY

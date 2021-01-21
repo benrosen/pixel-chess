@@ -5,7 +5,7 @@
  * @property {string} gameId The id of the game whose status you want to update.
  * @property {GameStatus} status The new status for the game.
  */
-export default /* GraphQL */ `
+module.exports = /* GraphQL */ `
   input UpdateStatusInput {
     gameId: ID!
     status: GameStatus!
