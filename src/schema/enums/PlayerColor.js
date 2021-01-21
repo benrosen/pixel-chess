@@ -9,7 +9,7 @@ const PlayerColor = {
   WHITE: 1,
 };
 
-export default /* GraphQL */ `
+module.exports = /* GraphQL */ `
   enum PlayerColor {
     BLACK
     WHITE

@@ -8,7 +8,7 @@
  * @property {GameStatus} status The current status of the game.
  * @property {string} white The id of the white player.
  */
-export default /* GraphQL */ `
+module.exports = /* GraphQL */ `
   type Game
     @aws_iam
     @auth(

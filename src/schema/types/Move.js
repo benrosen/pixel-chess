@@ -6,7 +6,7 @@
  * @property {string} gameId The id of the game associated with this move.
  * @property {string} moveText The move represented in standard algebraic notation.
  */
-export default /* GraphQL */ `
+module.exports = /* GraphQL */ `
   type Move
     @aws_iam
     @auth(rules: [{ allow: public, provider: iam, operations: [create] }])

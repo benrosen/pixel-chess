@@ -8,7 +8,7 @@
  * @property {SetPlayerMutation} setPlayer
  * @property {UpdateStatusMutation} updateStatus
  */
-export default /* GraphQL */ `
+module.exports = /* GraphQL */ `
   type Mutation {
     appendMoveText(input: AppendMoveTextInput!): Game @aws_iam
     createConnection(input: CreateConnectionInput!): Connection @aws_iam
