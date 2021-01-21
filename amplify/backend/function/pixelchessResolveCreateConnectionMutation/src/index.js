@@ -34,7 +34,7 @@ const lambda = new AWS.Lambda();
 /**
  * Create a connection to a game.
  *
- * @param {*} event The Lambda event to handle.
+ * @param {CreateConnectionInput} event The Lambda event to handle.
  * @returns The newly created connection.
  */
 exports.handler = async (event) => {

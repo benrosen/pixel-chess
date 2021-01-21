@@ -20,7 +20,7 @@ const documentClient = new AWS.DynamoDB.DocumentClient();
 /**
  * Update the status of a game.
  *
- * @param {*} event The Lambda event to be handled.
+ * @param {UpdateStatusEvent} event The Lambda event to be handled.
  * @returns The newly updated game.
  */
 exports.handler = async ({ arguments }) => {

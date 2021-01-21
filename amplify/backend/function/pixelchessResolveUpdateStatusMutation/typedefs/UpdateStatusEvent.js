@@ -1,0 +1,4 @@
+/**
+ * @typedef UpdateStatusEvent
+ * @property {*} arguments
+ */
