@@ -37,7 +37,6 @@ exports.handler = async ({ id }) => {
       return response.data.getGame;
     })
     .catch((error) => {
-      // TODO handle error
       console.log(error);
     });
 };
