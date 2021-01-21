@@ -1,6 +1,6 @@
-import createGameSubscription from "./subscribeToGame";
+import createGameSubscription from "./createGameSubscription";
 
-describe("The subscribeToGame function", () => {
+describe("The createGameSubscription function", () => {
   it("should be defined.", () => {
     expect(createGameSubscription).toBeDefined();
   });
