@@ -20,8 +20,8 @@ const ENDPOINT = new urlParse(APPSYNC_URL).hostname.toString();
 /**
  * Execute a GraphQL operation on the project's API.
  *
- * @param {*} event The Lambda event to handle.
- * @returns The response from the GraphQL API.
+ * @param {ExecuteGraphQLOperationEvent} event The Lambda event to handle.
+ * @returns {*} The response from the GraphQL API.
  */
 exports.handler = async ({ item, operation, operationName }) => {
   const request = createRequest(
