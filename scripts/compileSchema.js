@@ -1,7 +1,7 @@
 const fs = require("fs");
 const glob = require("glob");
 
-function main() {
+function compileSchema() {
   glob("./src/schema/**/*.js", (error, files) => {
     if (error) {
       throw error;
@@ -27,12 +27,9 @@ function main() {
         }
       }
     );
-
-    // TODO use reduce on files to create a string containing the entire schema
-    // TODO write the schema string to ./amplify/backend/api/pixelchess/schema.graphql
   });
 }
 
-main();
+compileSchema();
 
-module.exports = main;
+module.exports = compileSchema;
