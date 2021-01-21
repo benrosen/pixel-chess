@@ -21,5 +21,3 @@ module.exports = /* GraphQL */ `
     game: Game @connection(fields: ["gameId"]) @aws_iam
   }
 `;
-
-// TODO custom jsdoc tags for appsync directives like @aws_iam and @auth and @model

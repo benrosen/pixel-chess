@@ -99,7 +99,7 @@ exports.handler = async ({ arguments, timestamp }) => {
     )
       .then((response) => {
         console.log("updateStatus response", response);
-        // TODO return response?
+        return response;
       })
       .catch((error) => {
         console.log(error);
